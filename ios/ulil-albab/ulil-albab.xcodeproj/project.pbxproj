@@ -1,0 +1,971 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A3467C1CE6EB4AC1D08F667 /* libPods-ulil-albabTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6C6DA68529808C793ADD25 /* libPods-ulil-albabTests.a */; };
+		1EC93C208614747A7ADE650F /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD439ED302CC0110D857F5E /* ExpoModulesProvider.swift */; };
+		461837162BAF4454001C9495 /* ulil_albabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461837152BAF4454001C9495 /* ulil_albabApp.swift */; };
+		461837182BAF4454001C9495 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461837172BAF4454001C9495 /* ContentView.swift */; };
+		4618371A2BAF4457001C9495 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 461837192BAF4457001C9495 /* Assets.xcassets */; };
+		4618371E2BAF4457001C9495 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4618371D2BAF4457001C9495 /* Preview Assets.xcassets */; };
+		461837282BAF4457001C9495 /* ulil_albabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461837272BAF4457001C9495 /* ulil_albabTests.swift */; };
+		461837322BAF4457001C9495 /* ulil_albabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461837312BAF4457001C9495 /* ulil_albabUITests.swift */; };
+		461837342BAF4457001C9495 /* ulil_albabUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461837332BAF4457001C9495 /* ulil_albabUITestsLaunchTests.swift */; };
+		46D2D1D72BB488B900AFD3BD /* www in Resources */ = {isa = PBXBuildFile; fileRef = 46D2D1D62BB488B800AFD3BD /* www */; };
+		74047E5F9B375D0B630FFC7D /* libPods-ulil-albab-ulil-albabUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843BCE8E3B6AA0F20BFBA1CC /* libPods-ulil-albab-ulil-albabUITests.a */; };
+		D2696C1431D0FA5A2680BC46 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADC677C870ECF0613ADA610 /* ExpoModulesProvider.swift */; };
+		D5107A1906019A7ED530C5B4 /* libPods-ulil-albab.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F1E3CEA1B7BE8CD1A96AFCD /* libPods-ulil-albab.a */; };
+		DCFC7E66E397567E2CAC309D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B30522960B7EC45B2606A8 /* ExpoModulesProvider.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		461837242BAF4457001C9495 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4618370A2BAF4454001C9495 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 461837112BAF4454001C9495;
+			remoteInfo = "ulil-albab";
+		};
+		4618372E2BAF4457001C9495 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4618370A2BAF4454001C9495 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 461837112BAF4454001C9495;
+			remoteInfo = "ulil-albab";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0F31605BD04144E542CEA22C /* Pods-ulil-albab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ulil-albab.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-ulil-albab/Pods-ulil-albab.release.xcconfig"; sourceTree = "<group>"; };
+		38F69C3994AC086278F3827E /* Pods-ulil-albab-ulil-albabUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ulil-albab-ulil-albabUITests.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-ulil-albab-ulil-albabUITests/Pods-ulil-albab-ulil-albabUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3DD439ED302CC0110D857F5E /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "../Pods/Target Support Files/Pods-ulil-albab-ulil-albabUITests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		3F6C6DA68529808C793ADD25 /* libPods-ulil-albabTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ulil-albabTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41FD459A384044C1BAC4F0D1 /* Pods-ulil-albab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ulil-albab.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-ulil-albab/Pods-ulil-albab.debug.xcconfig"; sourceTree = "<group>"; };
+		461837122BAF4454001C9495 /* ulil-albab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ulil-albab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		461837152BAF4454001C9495 /* ulil_albabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ulil_albabApp.swift; sourceTree = "<group>"; };
+		461837172BAF4454001C9495 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		461837192BAF4457001C9495 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4618371B2BAF4457001C9495 /* ulil_albab.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ulil_albab.entitlements; sourceTree = "<group>"; };
+		4618371D2BAF4457001C9495 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		461837232BAF4457001C9495 /* ulil-albabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ulil-albabTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		461837272BAF4457001C9495 /* ulil_albabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ulil_albabTests.swift; sourceTree = "<group>"; };
+		4618372D2BAF4457001C9495 /* ulil-albabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ulil-albabUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		461837312BAF4457001C9495 /* ulil_albabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ulil_albabUITests.swift; sourceTree = "<group>"; };
+		461837332BAF4457001C9495 /* ulil_albabUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ulil_albabUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		46D2D1D62BB488B800AFD3BD /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
+		575C301C6DFB65B4A4D9FA9A /* Pods-ulil-albabTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ulil-albabTests.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-ulil-albabTests/Pods-ulil-albabTests.release.xcconfig"; sourceTree = "<group>"; };
+		843BCE8E3B6AA0F20BFBA1CC /* libPods-ulil-albab-ulil-albabUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ulil-albab-ulil-albabUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		871BE867A4488A04ACA44A65 /* Pods_ulil_albab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ulil_albab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F1E3CEA1B7BE8CD1A96AFCD /* libPods-ulil-albab.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ulil-albab.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4DAAE59098C75F7335BB44B /* Pods-ulil-albab-ulil-albabUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ulil-albab-ulil-albabUITests.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-ulil-albab-ulil-albabUITests/Pods-ulil-albab-ulil-albabUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B94CBD78492F491C52AF469A /* Pods-ulil-albabTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ulil-albabTests.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-ulil-albabTests/Pods-ulil-albabTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E8B30522960B7EC45B2606A8 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "../Pods/Target Support Files/Pods-ulil-albabTests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		EADC677C870ECF0613ADA610 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "../Pods/Target Support Files/Pods-ulil-albab/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4618370F2BAF4454001C9495 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5107A1906019A7ED530C5B4 /* libPods-ulil-albab.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		461837202BAF4457001C9495 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A3467C1CE6EB4AC1D08F667 /* libPods-ulil-albabTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4618372A2BAF4457001C9495 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74047E5F9B375D0B630FFC7D /* libPods-ulil-albab-ulil-albabUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2470B4610B977D4497782344 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				41FD459A384044C1BAC4F0D1 /* Pods-ulil-albab.debug.xcconfig */,
+				0F31605BD04144E542CEA22C /* Pods-ulil-albab.release.xcconfig */,
+				38F69C3994AC086278F3827E /* Pods-ulil-albab-ulil-albabUITests.debug.xcconfig */,
+				B4DAAE59098C75F7335BB44B /* Pods-ulil-albab-ulil-albabUITests.release.xcconfig */,
+				B94CBD78492F491C52AF469A /* Pods-ulil-albabTests.debug.xcconfig */,
+				575C301C6DFB65B4A4D9FA9A /* Pods-ulil-albabTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		461837092BAF4454001C9495 = {
+			isa = PBXGroup;
+			children = (
+				461837142BAF4454001C9495 /* ulil-albab */,
+				461837262BAF4457001C9495 /* ulil-albabTests */,
+				461837302BAF4457001C9495 /* ulil-albabUITests */,
+				461837132BAF4454001C9495 /* Products */,
+				2470B4610B977D4497782344 /* Pods */,
+				79F39AF7CB00A719734D7E54 /* Frameworks */,
+				B22C2D367A5A4820E2BCD69E /* ExpoModulesProviders */,
+			);
+			sourceTree = "<group>";
+		};
+		461837132BAF4454001C9495 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				461837122BAF4454001C9495 /* ulil-albab.app */,
+				461837232BAF4457001C9495 /* ulil-albabTests.xctest */,
+				4618372D2BAF4457001C9495 /* ulil-albabUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		461837142BAF4454001C9495 /* ulil-albab */ = {
+			isa = PBXGroup;
+			children = (
+				46D2D1D62BB488B800AFD3BD /* www */,
+				461837152BAF4454001C9495 /* ulil_albabApp.swift */,
+				461837172BAF4454001C9495 /* ContentView.swift */,
+				461837192BAF4457001C9495 /* Assets.xcassets */,
+				4618371B2BAF4457001C9495 /* ulil_albab.entitlements */,
+				4618371C2BAF4457001C9495 /* Preview Content */,
+			);
+			path = "ulil-albab";
+			sourceTree = "<group>";
+		};
+		4618371C2BAF4457001C9495 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				4618371D2BAF4457001C9495 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		461837262BAF4457001C9495 /* ulil-albabTests */ = {
+			isa = PBXGroup;
+			children = (
+				461837272BAF4457001C9495 /* ulil_albabTests.swift */,
+			);
+			path = "ulil-albabTests";
+			sourceTree = "<group>";
+		};
+		461837302BAF4457001C9495 /* ulil-albabUITests */ = {
+			isa = PBXGroup;
+			children = (
+				461837312BAF4457001C9495 /* ulil_albabUITests.swift */,
+				461837332BAF4457001C9495 /* ulil_albabUITestsLaunchTests.swift */,
+			);
+			path = "ulil-albabUITests";
+			sourceTree = "<group>";
+		};
+		79F39AF7CB00A719734D7E54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				871BE867A4488A04ACA44A65 /* Pods_ulil_albab.framework */,
+				8F1E3CEA1B7BE8CD1A96AFCD /* libPods-ulil-albab.a */,
+				843BCE8E3B6AA0F20BFBA1CC /* libPods-ulil-albab-ulil-albabUITests.a */,
+				3F6C6DA68529808C793ADD25 /* libPods-ulil-albabTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7C52A3B78C85F8CCF725F15C /* ulil-albabTests */ = {
+			isa = PBXGroup;
+			children = (
+				E8B30522960B7EC45B2606A8 /* ExpoModulesProvider.swift */,
+			);
+			name = "ulil-albabTests";
+			sourceTree = "<group>";
+		};
+		89F2DC810C73316466EB77C0 /* ulil-albab */ = {
+			isa = PBXGroup;
+			children = (
+				EADC677C870ECF0613ADA610 /* ExpoModulesProvider.swift */,
+			);
+			name = "ulil-albab";
+			sourceTree = "<group>";
+		};
+		B22C2D367A5A4820E2BCD69E /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				89F2DC810C73316466EB77C0 /* ulil-albab */,
+				B67DD8DE048264BAEE6899F6 /* ulil-albabUITests */,
+				7C52A3B78C85F8CCF725F15C /* ulil-albabTests */,
+			);
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
+		B67DD8DE048264BAEE6899F6 /* ulil-albabUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3DD439ED302CC0110D857F5E /* ExpoModulesProvider.swift */,
+			);
+			name = "ulil-albabUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		461837112BAF4454001C9495 /* ulil-albab */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 461837372BAF4458001C9495 /* Build configuration list for PBXNativeTarget "ulil-albab" */;
+			buildPhases = (
+				7C0B28A38097DCAA30564B3E /* [CP] Check Pods Manifest.lock */,
+				134BB33DB527EC951B707A9E /* [Expo] Configure project */,
+				4618370E2BAF4454001C9495 /* Sources */,
+				4618370F2BAF4454001C9495 /* Frameworks */,
+				461837102BAF4454001C9495 /* Resources */,
+				590D00CDF9180940EE8D06A4 /* [CP] Copy Pods Resources */,
+				ABAC1E4A5D5607B5D0A6A1E5 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ulil-albab";
+			productName = "ulil-albab";
+			productReference = 461837122BAF4454001C9495 /* ulil-albab.app */;
+			productType = "com.apple.product-type.application";
+		};
+		461837222BAF4457001C9495 /* ulil-albabTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4618373A2BAF4458001C9495 /* Build configuration list for PBXNativeTarget "ulil-albabTests" */;
+			buildPhases = (
+				026E022BCF624AF7F7088921 /* [CP] Check Pods Manifest.lock */,
+				954432082261D4AC9005BD06 /* [Expo] Configure project */,
+				4618371F2BAF4457001C9495 /* Sources */,
+				461837202BAF4457001C9495 /* Frameworks */,
+				461837212BAF4457001C9495 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				461837252BAF4457001C9495 /* PBXTargetDependency */,
+			);
+			name = "ulil-albabTests";
+			productName = "ulil-albabTests";
+			productReference = 461837232BAF4457001C9495 /* ulil-albabTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4618372C2BAF4457001C9495 /* ulil-albabUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4618373D2BAF4458001C9495 /* Build configuration list for PBXNativeTarget "ulil-albabUITests" */;
+			buildPhases = (
+				0C44A9182B08C2CAF9B38329 /* [CP] Check Pods Manifest.lock */,
+				F5D2FD312C5AE7B6E500FB56 /* [Expo] Configure project */,
+				461837292BAF4457001C9495 /* Sources */,
+				4618372A2BAF4457001C9495 /* Frameworks */,
+				4618372B2BAF4457001C9495 /* Resources */,
+				F6D9F8780DC5F9E7DC75BBCD /* [CP] Copy Pods Resources */,
+				5D75BD9D389AD5FEE9768354 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4618372F2BAF4457001C9495 /* PBXTargetDependency */,
+			);
+			name = "ulil-albabUITests";
+			productName = "ulil-albabUITests";
+			productReference = 4618372D2BAF4457001C9495 /* ulil-albabUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4618370A2BAF4454001C9495 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					461837112BAF4454001C9495 = {
+						CreatedOnToolsVersion = 15.1;
+					};
+					461837222BAF4457001C9495 = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = 461837112BAF4454001C9495;
+					};
+					4618372C2BAF4457001C9495 = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = 461837112BAF4454001C9495;
+					};
+				};
+			};
+			buildConfigurationList = 4618370D2BAF4454001C9495 /* Build configuration list for PBXProject "ulil-albab" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 461837092BAF4454001C9495;
+			productRefGroup = 461837132BAF4454001C9495 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				461837112BAF4454001C9495 /* ulil-albab */,
+				461837222BAF4457001C9495 /* ulil-albabTests */,
+				4618372C2BAF4457001C9495 /* ulil-albabUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		461837102BAF4454001C9495 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46D2D1D72BB488B900AFD3BD /* www in Resources */,
+				4618371E2BAF4457001C9495 /* Preview Assets.xcassets in Resources */,
+				4618371A2BAF4457001C9495 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		461837212BAF4457001C9495 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4618372B2BAF4457001C9495 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		026E022BCF624AF7F7088921 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ulil-albabTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0C44A9182B08C2CAF9B38329 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ulil-albab-ulil-albabUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		134BB33DB527EC951B707A9E /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./../Pods/Target\\ Support\\ Files/Pods-ulil-albab/expo-configure-project.sh\"\n";
+		};
+		590D00CDF9180940EE8D06A4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ulil-albab/Pods-ulil-albab-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ulil-albab/Pods-ulil-albab-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ulil-albab/Pods-ulil-albab-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5D75BD9D389AD5FEE9768354 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ulil-albab-ulil-albabUITests/Pods-ulil-albab-ulil-albabUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ulil-albab-ulil-albabUITests/Pods-ulil-albab-ulil-albabUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ulil-albab-ulil-albabUITests/Pods-ulil-albab-ulil-albabUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C0B28A38097DCAA30564B3E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ulil-albab-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		954432082261D4AC9005BD06 /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./../Pods/Target\\ Support\\ Files/Pods-ulil-albabTests/expo-configure-project.sh\"\n";
+		};
+		ABAC1E4A5D5607B5D0A6A1E5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ulil-albab/Pods-ulil-albab-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ulil-albab/Pods-ulil-albab-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ulil-albab/Pods-ulil-albab-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5D2FD312C5AE7B6E500FB56 /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./../Pods/Target\\ Support\\ Files/Pods-ulil-albab-ulil-albabUITests/expo-configure-project.sh\"\n";
+		};
+		F6D9F8780DC5F9E7DC75BBCD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ulil-albab-ulil-albabUITests/Pods-ulil-albab-ulil-albabUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ulil-albab-ulil-albabUITests/Pods-ulil-albab-ulil-albabUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ulil-albab-ulil-albabUITests/Pods-ulil-albab-ulil-albabUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4618370E2BAF4454001C9495 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				461837182BAF4454001C9495 /* ContentView.swift in Sources */,
+				461837162BAF4454001C9495 /* ulil_albabApp.swift in Sources */,
+				D2696C1431D0FA5A2680BC46 /* ExpoModulesProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4618371F2BAF4457001C9495 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				461837282BAF4457001C9495 /* ulil_albabTests.swift in Sources */,
+				DCFC7E66E397567E2CAC309D /* ExpoModulesProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		461837292BAF4457001C9495 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				461837322BAF4457001C9495 /* ulil_albabUITests.swift in Sources */,
+				461837342BAF4457001C9495 /* ulil_albabUITestsLaunchTests.swift in Sources */,
+				1EC93C208614747A7ADE650F /* ExpoModulesProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		461837252BAF4457001C9495 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 461837112BAF4454001C9495 /* ulil-albab */;
+			targetProxy = 461837242BAF4457001C9495 /* PBXContainerItemProxy */;
+		};
+		4618372F2BAF4457001C9495 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 461837112BAF4454001C9495 /* ulil-albab */;
+			targetProxy = 4618372E2BAF4457001C9495 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		461837352BAF4457001C9495 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION,
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				OTHER_LDFLAGS = "$(inherited)";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HERMES = false;
+			};
+			name = Debug;
+		};
+		461837362BAF4457001C9495 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION,
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				OTHER_LDFLAGS = "$(inherited)";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				USE_HERMES = false;
+			};
+			name = Release;
+		};
+		461837382BAF4458001C9495 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41FD459A384044C1BAC4F0D1 /* Pods-ulil-albab.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "ulil-albab/ulil_albab.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ulil-albab/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = "Albab-Foundation.ulil-albab";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		461837392BAF4458001C9495 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F31605BD04144E542CEA22C /* Pods-ulil-albab.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "ulil-albab/ulil_albab.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ulil-albab/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = "Albab-Foundation.ulil-albab";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4618373B2BAF4458001C9495 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B94CBD78492F491C52AF469A /* Pods-ulil-albabTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = "Albab-Foundation.ulil-albabTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ulil-albab.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ulil-albab";
+			};
+			name = Debug;
+		};
+		4618373C2BAF4458001C9495 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 575C301C6DFB65B4A4D9FA9A /* Pods-ulil-albabTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = "Albab-Foundation.ulil-albabTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ulil-albab.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ulil-albab";
+			};
+			name = Release;
+		};
+		4618373E2BAF4458001C9495 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38F69C3994AC086278F3827E /* Pods-ulil-albab-ulil-albabUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = "Albab-Foundation.ulil-albabUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ulil-albab";
+			};
+			name = Debug;
+		};
+		4618373F2BAF4458001C9495 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4DAAE59098C75F7335BB44B /* Pods-ulil-albab-ulil-albabUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = "Albab-Foundation.ulil-albabUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ulil-albab";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4618370D2BAF4454001C9495 /* Build configuration list for PBXProject "ulil-albab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				461837352BAF4457001C9495 /* Debug */,
+				461837362BAF4457001C9495 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		461837372BAF4458001C9495 /* Build configuration list for PBXNativeTarget "ulil-albab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				461837382BAF4458001C9495 /* Debug */,
+				461837392BAF4458001C9495 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4618373A2BAF4458001C9495 /* Build configuration list for PBXNativeTarget "ulil-albabTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4618373B2BAF4458001C9495 /* Debug */,
+				4618373C2BAF4458001C9495 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4618373D2BAF4458001C9495 /* Build configuration list for PBXNativeTarget "ulil-albabUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4618373E2BAF4458001C9495 /* Debug */,
+				4618373F2BAF4458001C9495 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4618370A2BAF4454001C9495 /* Project object */;
+}
