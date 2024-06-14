@@ -1,17 +1,10 @@
 import React, {Component} from 'react';
-import {Alert, Text, View, Image, FlatList, Button} from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {useNavigation} from '@react-navigation/native';
+import { Text, View, Image, FlatList, Button} from 'react-native';
 import Styles from '../Style';
-import { RootStackParamList } from '../navigation/type';
-
-// type quranProps = StackNavigationProp<RootStackParamList, 'QuranList', 'Navigation'>;
 
 import { DATA_JUZ } from '../data/Quran';
 
 const QuranListJuz = () => {
-  // const navigation = useNavigation<quranProps>();
-
   return (
     
       <View style={Styles.dashboardContainer}>

@@ -1,29 +1,15 @@
 import React, {Component} from 'react';
 import {Alert, Text, View, Image, TouchableOpacity, Button} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import Styles from '../Style';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {StackNavigationProp} from '@react-navigation/stack';
-// import global from ''
 
-import { RootStackParamList } from '../navigation/type';
-
-type homeProps = StackNavigationProp<RootStackParamList, 'Home', 'Navigation'>;
+import { HomeScreenProps } from '../navigation/type';
   
-const Dashboard = () => {
-  const navigation = useNavigation<homeProps>();
-  // const isHermes = () => !!global.HermesInternal;
-  // console.log('isHermes', isHermes());
-
+const Dashboard = ({route, navigation}: HomeScreenProps) => {
 
   const _onPressButton = () => {
     Alert.alert('Im home');
   }
   
-  /*const _onPressQuranButton = () => {
-    navigation.navigate('QuranList');
-  }*/
-
   return (
     <View style={Styles.container}>
       <View style={Styles.dashboardContainer}>
@@ -64,9 +50,7 @@ const Dashboard = () => {
           </View>
 
           <View style={Styles.item}>
-            <TouchableOpacity onPress={() => navigation.navigate('QuranList', {
-              screen: 'QuranListSurah'
-            })}>
+            <TouchableOpacity onPress={() => navigation.navigate('QuranList')}>
               <Image source={require('../../assets/quran-book-icon.png')} />
                 
               <Text style={Styles.textSubTitle}>
@@ -76,8 +60,6 @@ const Dashboard = () => {
           </View>
 
         </View>
-
-
 
         <View style={Styles.wrapperBanner}>
           <Image 

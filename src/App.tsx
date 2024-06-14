@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { Text, View } from 'react-native';
+import { useFonts } from "expo-font";
 
 
 
@@ -16,6 +17,17 @@ import Navigation from './navigation/index';
 // </LogContext.Provider>
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    "SFPro-Black": require("../assets/fonts/SF-Pro-Display-Black.otf"),
+    "SFPro-Medium": require("../assets/fonts/SF-Pro-Display-Medium.otf"),
+    "SFPro-BlackItalic": require("../assets/fonts/SF-Pro-Display-BlackItalic.otf"),
+    "SFPro-Thin": require("../assets/fonts/SF-Pro-Display-Thin.otf"),
+  });
+
+  if (!fontsLoaded) {
+    return <Text>Loading...</Text>;
+  }
+
   return (   
       <Navigation />
   );

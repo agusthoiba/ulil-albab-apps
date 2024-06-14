@@ -9,6 +9,7 @@ const Styles = StyleSheet.create({
     },
     dashboardContainer: {
       // flex: 1,
+      fontFamily: 'SFPro-Medium',
       backgroundColor: '#fff',
       // alignItems: 'center',
       justifyContent: 'flex-start',
@@ -110,6 +111,7 @@ const Styles = StyleSheet.create({
     },
     itemQuranList: {
       padding: 10,
+      // fontFamily: 'SFPro-Black',
       fontSize: 12,
       height: 20,
       // borderBottomColor: '#D9D9D9'
@@ -119,7 +121,8 @@ const Styles = StyleSheet.create({
       justifyContent: 'space-between',
       padding: 10,
       // borderBottomStyle: 'solid',
-      borderBottomColor: '#D9D9D9'
+      borderBottomColor: '#D9D9D9',
+      fontFamily: 'SFPro-Thin',
       
     },
     itemQuranListDetailNumber: {
@@ -142,9 +145,43 @@ const Styles = StyleSheet.create({
       fontSize: 17
     },
     itemQuranListDetailCaptionAttr: {
-      fontSize: 13
-    }
+      fontFamily: 'SFPro-Thin',
+      fontSize: 14,
+    },
 
+    itemQuranDetailContainer: {
+      // padding: 10,
+      
+      // justifyContent: 'space-between'
+      //height: 20,
+      // borderBottomColor: '#D9D9D9'
+    },
+    itemQuranDetailList: {
+      flexDirection: 'row',
+      fontSize: 12,
+      fontFamily: 'SFPro-Thin',
+      marginBottom: 15
+      // margin: 5
+    },
+    itemQuranDetailListOdd: {
+      backgroundColor:'#E8F3DE'
+    },
+    itemQuranDetailListText: {
+      paddingLeft: 10,
+      flex: 10
+    },
+    itemQuranDetailListAyatArab: {
+      fontFamily: 'SFPro-Thin',
+      paddingLeft: 3,
+      paddingRight: 3,
+      textAlign: 'right',
+      
+    },
+    itemQuranDetailListAyatTerjemahan: {
+      fontFamily: 'SFPro-Thin',
+      paddingLeft: 3,
+      paddingRight: 3
+    },
   });
   
 export default Styles;
