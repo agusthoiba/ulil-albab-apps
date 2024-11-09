@@ -7,11 +7,11 @@
 
 const { getDefaultConfig } = require('expo/metro-config');
 
-console.log('__dirname', __dirname)
 const defaultConfig = getDefaultConfig(__dirname);
   
 defaultConfig.resolver.assetExts.push('db');
+defaultConfig.server.port = 8082
 // defaultConfig.transformer.assetPlugins = ["./assets/fonts/"];
-  
+
 module.exports = defaultConfig;
   
