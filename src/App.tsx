@@ -1,14 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
 import { Text, View } from 'react-native';
 import { useFonts } from "expo-font";
+import { Provider } from 'react-redux'
 
 
-
-
-// import { openDatabase } from './db-service';
-import Styles from './Style';
 import { LogContext } from './Contexts';
-import Home from './components/Dashboard';
+import store from './reducer/store';
 import Navigation from './navigation/index';
 
 
@@ -29,6 +25,8 @@ export default function App() {
   }
 
   return (   
+    <Provider store={store}>
       <Navigation />
+    </Provider>
   );
 }

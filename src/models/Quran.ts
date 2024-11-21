@@ -8,7 +8,7 @@ export type Surah = {
 
 export type Ayat = {
     Surah: string;
-    Ayat: string;
+    Ayat: number;
     Arab: string;
     Terjemahan: string;
 }

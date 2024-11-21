@@ -10,6 +10,8 @@ import { QuranListSurahTabProps } from '../navigation/type';
 import { getQuranSurah } from '../db-service';
 import { Surah } from '../models/Quran';
 
+import SurahRest from '../rest/Surah.rest';
+
 type ItemProps = {
   item: Surah;
   onPress: () => void;
@@ -27,10 +29,9 @@ const Item = ({item, onPress, backgroundColor, textColor}: ItemProps) => (
 const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
 
   const [items, setItems] = useState<Surah[]>([]);
-
   const [selectedId, setSelectedId] = useState<string>();
   
-  const loadDataCallback = useCallback(async () => {
+  /*const loadDataCallback = useCallback(async () => {
       log.debug('items initiate --', items)
      
       log.info('after connect db in component')
@@ -40,14 +41,36 @@ const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
 
         log.debug('items after set --', items)
   }, []);
-
   useEffect(() => {
     loadDataCallback();
-  }, [loadDataCallback]);
+  }, [loadDataCallback]);*/
+
+  const getSurah = async () => {
+    const surahRest = new SurahRest();
+
+    const dataSurah = await surahRest.get();
+    console.log('dataSurahMock', dataSurah)
+    let surahs: Surah[] = [];
+
+    for (let sur of dataSurah) {
+      let suro: Surah =  {
+        Surah: (sur.id).toString(),
+        Ayat: sur.title,
+        Terjemahan: sur.body,
+        Jumlah_Ayat: '100',
+        Ayat_Arab: sur.title
+      }
+      surahs.push(suro)
+    }
+    setItems(surahs);
+  };
+
+
+  useEffect(() => {
+    getSurah();
+  }, []);
 
   return (
-    
-
       <View style={Styles.dashboardContainer}>
         
         <View style={Styles.wrapper}>
