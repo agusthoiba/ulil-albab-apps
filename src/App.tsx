@@ -1,11 +1,11 @@
 import { Text, View } from 'react-native';
-import { useFonts } from "expo-font";
 import { Provider } from 'react-redux'
+import { useFonts, Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from '@expo-google-fonts/roboto'
 
-
-import { LogContext } from './Contexts';
 import store from './reducer/store';
 import Navigation from './navigation/index';
+
+
 
 
 
@@ -14,11 +14,10 @@ import Navigation from './navigation/index';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    "SFPro-Black": require("../assets/fonts/SF-Pro-Display-Black.otf"),
-    "SFPro-Medium": require("../assets/fonts/SF-Pro-Display-Medium.otf"),
-    "SFPro-BlackItalic": require("../assets/fonts/SF-Pro-Display-BlackItalic.otf"),
-    "SFPro-Thin": require("../assets/fonts/SF-Pro-Display-Thin.otf"),
-  });
+    Roboto_400Regular,
+      Roboto_500Medium,
+      Roboto_700Bold,
+    })
 
   if (!fontsLoaded) {
     return <Text>Loading...</Text>;

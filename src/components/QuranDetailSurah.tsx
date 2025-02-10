@@ -33,32 +33,30 @@ const QuranDetailSurah = ({route, navigation }: QuranDetailSurahScreenProps) => 
   }, [loadDataCallback]);
 
   return (
-    
-      <View style={Styles.dashboardContainer}>
+      <View style={Styles.container}>
         
-        <View style={Styles.wrapper}>
+        <View>
           <FlatList
             data={items}
             renderItem={
-              ({item}) => 
-                
-                  <View style={Styles.itemQuranDetailList}>
-                    <View style={Styles.itemQuranListDetailNumber}>
-                      <Text>{item.Ayat}</Text>
-                    </View>
-                    <View style={Styles.itemQuranDetailListText}>
-                      <Text style={Styles.itemQuranDetailListAyatArab} >
-                          {item.Arab}
-                      </Text>
-                      <Text style={Styles.itemQuranDetailListAyatTerjemahan}>
-                        {item.Terjemahan}
-                      </Text>
-                    </View>
-                    </View>
-                
-               }
+              ({item}) =>
+                <View style={Styles.surahInfo}>
+                  <View style={Styles.numberCircle}>
+                    <Text>{item.Ayat}</Text>
+                  </View>
+                    <Text style={Styles.description}>
+                      {item.Arab}
+                    </Text>
+
+                    <Text style={Styles.description}>
+                      {item.Terjemahan}
+                    </Text>
+
+                </View>
+            }
           />
         </View>
+
       </View> 
     )
 }

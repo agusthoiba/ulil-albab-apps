@@ -13,18 +13,22 @@ export type RootStackParamList = {
 
 export type HomeScreenProps = NativeStackScreenProps<RootStackParamList,"Home">;
 
-export type BottomTabParamList = {
-  Home: undefined;
-  Quran: undefined;
-  Sholat: undefined;
-  Profile: undefined;
-};
+
 
 export type QuranTabParamList = {
   QuranListSurah: undefined;
   QuranListJuz: undefined;
   QuranDetail: { surahId: string }
 };
+
+export type BottomTabParamList = {
+  Home: undefined;
+  Quran: undefined;
+  Tafsir: undefined;
+  Settings: undefined;
+};
+
+/*export type QuranBottomTabProps = BottomTabScreenProps<BottomTabParamList, 'Quran'> */
 
 export type QuranListSurahTabProps = CompositeScreenProps<
   MaterialTopTabScreenProps<QuranTabParamList, "QuranListSurah">,

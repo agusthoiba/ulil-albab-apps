@@ -1,5 +1,5 @@
 import React, {Component, useCallback, useEffect, useState } from 'react';
-import {Alert, Text, View, Image, FlatList, Button, TouchableOpacity, TouchableHighlight} from 'react-native';
+import {Text, View, TextInput, Image, SafeAreaView, FlatList, TouchableOpacity, TouchableHighlight} from 'react-native';
 
 import { logger } from "react-native-logs";
 
@@ -11,6 +11,7 @@ import { getQuranSurah } from '../db-service';
 import { Surah } from '../models/Quran';
 
 import SurahRest from '../rest/Surah.rest';
+import { ScrollView } from 'react-native-gesture-handler';
 
 type ItemProps = {
   item: Surah;
@@ -46,7 +47,8 @@ const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
   }, [loadDataCallback]);*/
 
   const getSurah = async () => {
-    const surahRest = new SurahRest();
+    const baseUrl = 'http://localhost:1323';
+    const surahRest = new SurahRest(baseUrl);
 
     const dataSurah = await surahRest.get();
     console.log('dataSurahMock', dataSurah)
@@ -54,11 +56,11 @@ const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
 
     for (let sur of dataSurah) {
       let suro: Surah =  {
-        Surah: (sur.id).toString(),
-        Ayat: sur.title,
-        Terjemahan: sur.body,
-        Jumlah_Ayat: '100',
-        Ayat_Arab: sur.title
+        Surah: (sur.number).toString(),
+        Ayat: sur.name,
+        Terjemahan: sur.translation,
+        Jumlah_Ayat: sur.numberOfAyahs,
+        Ayat_Arab: ''// sur.revelation
       }
       surahs.push(suro)
     }
@@ -71,42 +73,60 @@ const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
   }, []);
 
   return (
-      <View style={Styles.dashboardContainer}>
-        
-        <View style={Styles.wrapper}>
-          <FlatList
-            data={items}
-            renderItem={
-              ({item, index, separators}) => 
-               
+      <SafeAreaView style={Styles.container}>
+        {/* Header */}
+        <View style={Styles.header}>
+          <Text style={Styles.headerTitle}>Al-Quran</Text>
+            <View style={Styles.headerIcons}>
+              <Text style={Styles.headerIcon}>🔖</Text>
+              <Text style={Styles.headerIcon}>⚙️</Text>
+              <TouchableOpacity style={Styles.searchButton}>
+                <Text style={Styles.searchButtonText}>🔍 Cari</Text>
+              </TouchableOpacity>
+            </View>
+        </View>
+
+        {/* Search Input */}
+        <View style={Styles.searchContainer}>
+          <TextInput 
+            style={Styles.searchInput}
+            placeholder="Cari Nama Surah"
+            placeholderTextColor="#999"
+          />
+        </View>  
+
+        {/* List Surah */}
+          <ScrollView style={Styles.surahList}>
+            {items.map(item =>
               <TouchableOpacity onPress={() => 
-                 //Alert.alert(item.Surah)
-                navigation.navigate('QuranDetail', {
-                  surahId: item.Surah
-                })
-              }>
-                  <View style={Styles.itemQuranListDetail}>
-                    <View style={Styles.itemQuranListDetailNumber}>
+                  navigation.navigate('QuranDetail', {
+                    surahId: item.Surah
+                  })
+                }
+                key={item.Surah}
+                style={Styles.surahItem}>
+                  
+                    <View style={Styles.numberCircle}>
                       <Text>{item.Surah}</Text>
                     </View>
 
-                    <View style={Styles.itemQuranListDetailCaption}>
-                      <Text style={Styles.itemQuranListDetailCaptionName}>
-                        {item.Ayat} {item.Ayat_Arab}
-                      </Text>
-                      <Text style={Styles.itemQuranListDetailCaptionAttr}>
-                        Mekah - {item.Terjemahan} - {String(item.Jumlah_Ayat)} ayat
-                      </Text>
+                    <View style={Styles.surahInfo}>
+                      <View style={Styles.surahNameContainer}>
+                        <Text style={Styles.surahName}> {item.Ayat} </Text>
+                        {/*<Text style={Styles.arabicName}> {item.Ayat_Arab} </Text> Mekah -  */}
+                        
+                      </View>
+
+                      <Text style={Styles.description}>
+                          {item.Terjemahan} ({String(item.Jumlah_Ayat)} ayat)
+                        </Text>
                     </View>
                     
-                  </View>
               </TouchableOpacity>
-            }
-            keyExtractor={item => item.Surah}
-            extraData={selectedId}
-          />
-        </View>
-      </View> 
+            
+            )}
+          </ScrollView>
+      </SafeAreaView> 
     )
 }
 

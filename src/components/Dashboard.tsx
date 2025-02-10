@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Alert, Text, View, Image, TouchableOpacity, Button} from 'react-native';
+import React from 'react';
+import {Alert, Text, View, Image, TouchableOpacity} from 'react-native';
 import Styles from '../Style';
 
 import { HomeScreenProps } from '../navigation/type';
@@ -12,48 +12,29 @@ const Dashboard = ({route, navigation}: HomeScreenProps) => {
   
   return (
     <View style={Styles.container}>
-      <View style={Styles.dashboardContainer}>
-        <View style={Styles.dashboardLogo}>
+      <View style={Styles.header}>
+        <View style={Styles.logo}>
          <Image 
           source={require('../../assets/logo.jpg')} 
          />
         </View> 
-        
-        <View style={Styles.dashboardTop}>
-          <TouchableOpacity onPress={_onPressButton}>
-            <View>
-              <Image source={require('../../assets/quran-top-icon.jpg')} />
-            </View>
+      </View>
 
-            <View style={Styles.dashboardTopText}>
-              <Text style={Styles.textTitle}>
-                Waktu Sholat
-              </Text>
-              <Text style={Styles.textSubTitle}>
-                subuh
-              </Text>
-              <Text style={Styles.textBold}>
-                04.47
-              </Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-
-        <View style={Styles.wrapperNoBack}>
-          <View style={Styles.item}>
+      <View style={Styles.featuresGrid}>
+          <View style={Styles.featureItem}>
             <Image 
               source={require('../../assets/kabah-icon.png')} 
             />
-            <Text style={Styles.textSubTitle}>
+            <Text style={Styles.featureTitle}>
               Panduan Haji & Umrah
             </Text>
           </View>
 
-          <View style={Styles.item}>
+          <View style={Styles.featureItem}>
             <TouchableOpacity onPress={() => navigation.navigate('QuranList')}>
-              <Image source={require('../../assets/quran-book-icon.png')} />
+              <Image source={require('../../assets/quran-book-icon.png')}/>
                 
-              <Text style={Styles.textSubTitle}>
+              <Text style={Styles.featureTitle}>
                 Al Qur'an & Terjemahan
               </Text>
             </TouchableOpacity>
@@ -61,12 +42,11 @@ const Dashboard = ({route, navigation}: HomeScreenProps) => {
 
         </View>
 
-        <View style={Styles.wrapperBanner}>
+        <View style={Styles.bannerContainer}>
           <Image 
             source={require('../../assets/banner.png')} 
           />
         </View>
-      </View>
     </View>
   );
 }
