@@ -1,10 +1,8 @@
-
 class Surah {
     private readonly baseUrl: string;
 
     public constructor(baseUrl: string) {
-        this.baseUrl = baseUrl
-
+        this.baseUrl = baseUrl;
     }
 
    async get() {

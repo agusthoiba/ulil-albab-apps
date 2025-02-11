@@ -47,11 +47,12 @@ const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
   }, [loadDataCallback]);*/
 
   const getSurah = async () => {
-    const baseUrl = 'http://localhost:1323';
+    const baseUrl = process.env.EXPO_PUBLIC_API_URL;
+    log.info('baseUrl', baseUrl);
     const surahRest = new SurahRest(baseUrl);
 
     const dataSurah = await surahRest.get();
-    console.log('dataSurahMock', dataSurah)
+    log.debug('dataSurah: ', dataSurah)
     let surahs: Surah[] = [];
 
     for (let sur of dataSurah) {
@@ -60,7 +61,7 @@ const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
         Ayat: sur.name,
         Terjemahan: sur.translation,
         Jumlah_Ayat: sur.numberOfAyahs,
-        Ayat_Arab: ''// sur.revelation
+        Ayat_Arab: sur.nameArab.String
       }
       surahs.push(suro)
     }
@@ -113,8 +114,7 @@ const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
                     <View style={Styles.surahInfo}>
                       <View style={Styles.surahNameContainer}>
                         <Text style={Styles.surahName}> {item.Ayat} </Text>
-                        {/*<Text style={Styles.arabicName}> {item.Ayat_Arab} </Text> Mekah -  */}
-                        
+                        <Text style={Styles.arabicName}> {item.Ayat_Arab} </Text> 
                       </View>
 
                       <Text style={Styles.description}>
