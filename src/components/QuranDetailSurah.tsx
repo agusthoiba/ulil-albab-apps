@@ -1,29 +1,32 @@
-import React, {Component, useCallback, useEffect, useState} from 'react';
+import React, {Component, useCallback, useEffect, useState, createContext, useContext} from 'react';
 import {Alert, Text, View, Image, FlatList, Button} from 'react-native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import { logger } from "react-native-logs";
-
 const log = logger.createLogger();
 
 import Styles from '../Style';
 import { QuranDetailSurahScreenProps } from '../navigation/type';
 import { getQuranAyat } from '../db-service';
 import { Ayat } from '../models/Quran';
+/*import { SurahResp } from '../models/Quran';
+interface SurahP {
+  surah: SurahResp
+}*/
 
-const QuranDetailSurah = ({route, navigation }: QuranDetailSurahScreenProps) => {
+const QuranDetailSurah = ({surah}) => {
   log.info('aku d component detail surah')
+  // log.info('aku routes params', route.params)
 
-  log.info('aku routes params', route.params)
-  const { surahId } = route.params;
-  
+  // const { surahId } = route.params;
   const [items, setItems] = useState<Ayat[]>([]);
   
   const loadDataCallback = useCallback(async () => {
       log.debug('items initiate --', items)
      
       log.info('after connect db in component')
-      log.info('surah no:', surahId)
-      const storedTodoItems = await getQuranAyat(surahId);
+      log.info('surah ', surah)
+      const storedTodoItems = await getQuranAyat(surah.number);
         setItems(storedTodoItems);
         log.debug('items after set --', items)
   }, []);
@@ -33,25 +36,23 @@ const QuranDetailSurah = ({route, navigation }: QuranDetailSurahScreenProps) => 
   }, [loadDataCallback]);
 
   return (
-      <View style={Styles.container}>
+      <View>
         
         <View>
+          <View style={Styles.bismillah}>
+            <Text style={Styles.arabicText}>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</Text>
+          </View>
           <FlatList
+
             data={items}
             renderItem={
               ({item}) =>
-                <View style={Styles.surahInfo}>
+                <View style={Styles.verse}>
                   <View style={Styles.numberCircle}>
                     <Text>{item.Ayat}</Text>
                   </View>
-                    <Text style={Styles.description}>
-                      {item.Arab}
-                    </Text>
-
-                    <Text style={Styles.description}>
-                      {item.Terjemahan}
-                    </Text>
-
+                    <Text style={Styles.arabicText}>{item.Arab}</Text>
+                    <Text style={Styles.translation}>{item.Terjemahan}</Text>
                 </View>
             }
           />

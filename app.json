@@ -7,9 +7,9 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash-screen.png",
+      "image": "./assets/logo_ulil_albab-photoroom.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#00A884"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -34,7 +34,12 @@
       }
     },
     "plugins": [
-      "expo-font"
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/KFGQPC-Uthmanic-Script-HAFS-Regular.otf"]
+        }
+      ]
     ]
   }
 }

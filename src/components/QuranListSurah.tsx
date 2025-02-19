@@ -28,23 +28,8 @@ const Item = ({item, onPress, backgroundColor, textColor}: ItemProps) => (
 );
 
 const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
-
   const [items, setItems] = useState<Surah[]>([]);
   const [selectedId, setSelectedId] = useState<string>();
-  
-  /*const loadDataCallback = useCallback(async () => {
-      log.debug('items initiate --', items)
-     
-      log.info('after connect db in component')
-      const storedTodoItems = await getQuranSurah();
-
-        setItems(storedTodoItems);
-
-        log.debug('items after set --', items)
-  }, []);
-  useEffect(() => {
-    loadDataCallback();
-  }, [loadDataCallback]);*/
 
   const getSurah = async () => {
     const baseUrl = process.env.EXPO_PUBLIC_API_URL;
@@ -68,24 +53,12 @@ const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
     setItems(surahs);
   };
 
-
   useEffect(() => {
     getSurah();
   }, []);
 
   return (
       <SafeAreaView style={Styles.container}>
-        {/* Header */}
-        <View style={Styles.header}>
-          <Text style={Styles.headerTitle}>Al-Quran</Text>
-            <View style={Styles.headerIcons}>
-              <Text style={Styles.headerIcon}>🔖</Text>
-              <Text style={Styles.headerIcon}>⚙️</Text>
-              <TouchableOpacity style={Styles.searchButton}>
-                <Text style={Styles.searchButtonText}>🔍 Cari</Text>
-              </TouchableOpacity>
-            </View>
-        </View>
 
         {/* Search Input */}
         <View style={Styles.searchContainer}>
@@ -101,7 +74,8 @@ const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
             {items.map(item =>
               <TouchableOpacity onPress={() => 
                   navigation.navigate('QuranDetail', {
-                    surahId: item.Surah
+                    surahId: item.Surah,
+                    surahName: item.Ayat
                   })
                 }
                 key={item.Surah}
