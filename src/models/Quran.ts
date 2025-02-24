@@ -6,6 +6,18 @@ export type Surah = {
     Ayat_Arab: string;
 }
 
+export interface SurahResp {
+    number: number;
+    numberOfAyahs: number;
+    name: string;
+    translation: string;
+    nameArab: {
+        String: string;
+        Valid: boolean;
+    };
+    revelation: string;
+}
+
 export type Ayat = {
     Surah: string;
     Ayat: number;

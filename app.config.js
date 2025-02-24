@@ -1,0 +1,48 @@
+export default {
+  "name": "Ulil Albab",
+  "slug": "ulil-albab",
+  "jsEngine": "hermes",
+  "version": "1.0.0",
+  "orientation": "portrait",
+  "icon": "./assets/icon.png",
+  "userInterfaceStyle": "light",
+  "splash": {
+    "image": "./assets/logo_ulil_albab-photoroom.png",
+    "resizeMode": "contain",
+    "backgroundColor": "#00A884"
+  },
+  "assetBundlePatterns": [
+    "**/*"
+  ],
+  "platforms": ["ios", "android", "web"],
+  "ios": {
+    "supportsTablet": true,
+    "bundleIdentifier": "com.gust0.myajwaapps"
+  },
+  "android": {
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/adaptive-icon.png",
+      "backgroundColor": "#ffffff"
+    },
+    "package": "com.gust0.myajwaapps"
+  },
+  "web": {
+    "favicon": "./assets/favicon.png"
+  },
+  "extra": {
+    "eas": {
+      "projectId": "12676be4-f13a-4223-8533-08ebe3cb3ec4"
+    }
+  },
+  "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": ["assets/fonts/KFGQPC-Uthmanic-Script-HAFS-Regular.otf", "assets/fonts/Roboto-Regular.ttf", "assets/fonts/Roboto-Medium.ttf", "assets/fonts/Roboto-Bold.ttf"]
+        }
+      ],
+      [
+        "expo-asset"
+      ]
+    ]
+}

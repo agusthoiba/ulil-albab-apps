@@ -7,8 +7,7 @@ const log = logger.createLogger();
 
 import Styles from '../Style';
 import { QuranListSurahTabProps } from '../navigation/type';
-import { getQuranSurah } from '../db-service';
-import { Surah } from '../models/Quran';
+import { Surah } from '../../models/Quran';
 
 import SurahRest from '../rest/Surah.rest';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -37,7 +36,6 @@ const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
     const surahRest = new SurahRest(baseUrl);
 
     const dataSurah = await surahRest.get();
-    log.debug('dataSurah: ', dataSurah)
     let surahs: Surah[] = [];
 
     for (let sur of dataSurah) {

@@ -1,27 +1,36 @@
 import React, {Component, useCallback, useEffect, useState, createContext, useContext} from 'react';
 import {Alert, Text, View, Image, FlatList, Button} from 'react-native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { useDispatch, useSelector } from 'react-redux';
+
+
 
 import { logger } from "react-native-logs";
 const log = logger.createLogger();
 
 import Styles from '../Style';
-import { QuranDetailSurahScreenProps } from '../navigation/type';
-import { getQuranAyat } from '../db-service';
-import { Ayat } from '../models/Quran';
-/*import { SurahResp } from '../models/Quran';
-interface SurahP {
-  surah: SurahResp
-}*/
+import { getAyahAsync, addUser, removeUser } from '../reducer/ayahSlice';
+
+// import { Ayat } from '../../models/Quran';
+
 
 const QuranDetailSurah = ({surah}) => {
   log.info('aku d component detail surah')
-  // log.info('aku routes params', route.params)
+  log.info('surah: ', surah)
 
-  // const { surahId } = route.params;
-  const [items, setItems] = useState<Ayat[]>([]);
+  const dispatch = useDispatch();
+  const ayahs = useSelector((state) => state.ayah.data);
+  const loading = useSelector((state) => state.ayah.loading);
+  const error = useSelector((state) => state.ayah.error);
+
+  console.log("ayahs: ", ayahs)
+
+  // const [items, setItems] = useState<Ayat[]>([]);
   
-  const loadDataCallback = useCallback(async () => {
+  const items = ayahs.filter((a) => {
+    return a.suraId == surah.number
+  })
+  console.log("items: ", items)
+  /*const loadDataCallback = useCallback(async () => {
       log.debug('items initiate --', items)
      
       log.info('after connect db in component')
@@ -29,11 +38,11 @@ const QuranDetailSurah = ({surah}) => {
       const storedTodoItems = await getQuranAyat(surah.number);
         setItems(storedTodoItems);
         log.debug('items after set --', items)
-  }, []);
+  }, []);*/
 
   useEffect(() => {
-    loadDataCallback();
-  }, [loadDataCallback]);
+    dispatch(getAyahAsync(surah.number));
+  }, [dispatch]);
 
   return (
       <View>
@@ -49,10 +58,10 @@ const QuranDetailSurah = ({surah}) => {
               ({item}) =>
                 <View style={Styles.verse}>
                   <View style={Styles.numberCircle}>
-                    <Text>{item.Ayat}</Text>
+                    <Text>{item.id}</Text>
                   </View>
-                    <Text style={Styles.arabicText}>{item.Arab}</Text>
-                    <Text style={Styles.translation}>{item.Terjemahan}</Text>
+                    <Text style={Styles.arabicText}>{item.ayahText}</Text>
+                    <Text style={Styles.translation}>{item.indoText}</Text>
                 </View>
             }
           />

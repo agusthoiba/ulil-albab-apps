@@ -8,7 +8,10 @@ import type { StackScreenProps } from '@react-navigation/stack';
 export type RootStackParamList = {
   Home: undefined;
   QuranList:  undefined;
-  QuranDetail:  {surahId: string}
+  QuranDetail:  {
+    surahId: string
+    surahName: string
+  }
 };
 
 export type HomeScreenProps = NativeStackScreenProps<RootStackParamList,"Home">;
@@ -19,6 +22,14 @@ export type QuranTabParamList = {
   QuranListSurah: undefined;
   QuranListJuz: undefined;
   QuranDetail: { surahId: string }
+};
+
+export type QuranDetailTabParamList = {
+  QuranListJuz: undefined;
+  QuranDetail: { 
+    // surahId: string
+    surahName: string
+  }
 };
 
 export type BottomTabParamList = {

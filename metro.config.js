@@ -1,17 +1,6 @@
-/*module.exports = {
-    resolver: {
-      extraNodeModules: require('node-libs-react-native'),
-    },
-  };
-  */
+// Learn more https://docs.expo.io/guides/customizing-metro
+const { getDefaultConfig } = require('@expo/metro-config');
 
-const { getDefaultConfig } = require('expo/metro-config');
+const config = getDefaultConfig(__dirname);
 
-const defaultConfig = getDefaultConfig(__dirname);
-  
-defaultConfig.resolver.assetExts.push('db');
-defaultConfig.server.port = 8082
-// defaultConfig.transformer.assetPlugins = ["./assets/fonts/"];
-
-module.exports = defaultConfig;
-  
+module.exports = config;
