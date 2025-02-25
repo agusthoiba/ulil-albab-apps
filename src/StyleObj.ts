@@ -200,33 +200,47 @@ const StyleObj = {
     color: '#00A884',
   },
   surahInfoDetail: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 16,
+    padding: 5,
     backgroundColor: '#E8F5F3',
   },
   surahType: {
     fontSize: 14,
     color: '#666',
+    paddingLeft:5
   },
   surahTitle: {
     fontSize: 24,
-    marginVertical: 8,
+    // marginVertical: 8,
     fontFamily: 'UthmanicArab-Regular',
   },
   ayahCount: {
     fontSize: 14,
     color: '#666',
+    paddingRight:5
   },
   content: {
     flex: 1,
-    padding: 16,
+    // padding: 16,
   },
   bismillah: {
     alignItems: 'center',
-    marginBottom: 24,
+    marginBottom: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
   },
   verse: {
-    marginBottom: 24,
+    marginBottom: 10,
+    paddingBottom: 10,
+    paddingLeft: 16,
+    paddingRight: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+  },
+  arabicTextWrapper: {
+    flexDirection: 'row',
   },
   arabicText: {
     fontSize: 24,
@@ -235,8 +249,22 @@ const StyleObj = {
     lineHeight: 40,
     fontFamily: 'UthmanicArab-Regular',
   },
+  arabicNumberIndex: {
+    marginRight: 20,
+    paddingRight: 20,
+    color: 'saddlebrown',
+  },
+  arabicNumberCircle: {
+    width: 30,
+    height: 30,
+    borderRadius: 12,
+    borderWidth: 1.5,
+    borderColor: '#00A884',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   transliteration: {
-    fontSize: 16,
+    fontSize: 15,
     color: '#009688',
     marginBottom: 4,
   },
@@ -261,17 +289,24 @@ const StyleObj = {
     textAlign: 'center',
   },
   tabLabel: {
-    fontSize: 12
+    fontSize: 12,
   },
   tabItem: {
-    padding: 0
+    padding: 0,
+    width: 110,
+    height: 40,
+    flex:1,
   },
   tabBar: {
-    padding: 0
+    padding: 0,
+  },
+  tabIndicator: {
+    backgroundColor: '#1fb89d',
   },
   indicator: {
     backgroundColor: '#1fb89d',
   }
+
 }
 
 export default StyleObj;

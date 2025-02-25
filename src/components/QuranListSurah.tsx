@@ -7,7 +7,7 @@ const log = logger.createLogger();
 
 import Styles from '../Style';
 import { QuranListSurahTabProps } from '../navigation/type';
-import { Surah } from '../../models/Quran';
+import { Surah } from '../models/Quran';
 
 import SurahRest from '../rest/Surah.rest';
 import { ScrollView } from 'react-native-gesture-handler';

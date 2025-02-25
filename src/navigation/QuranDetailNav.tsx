@@ -56,7 +56,7 @@ export const QuranTabDetail = (props: QuranDetailSurahScreenProps) => {
           tabBarScrollEnabled: true,
           tabBarItemStyle: Styles.tabItem,
           tabBarStyle: Styles.tabBar,
-          tabBarIndicatorStyle: Styles.indicator,
+          tabBarIndicatorStyle: Styles.tabIndicator,
           tabBarLabelStyle: Styles.tabLabel,
           tabBarActiveTintColor: '#1fb89d',
           tabBarInactiveTintColor: '#8D8D8D',

@@ -29,7 +29,6 @@ class Surah {
         try {
           const response = await fetch(`${this.baseUrl}/quran/surah`);
           const data = await response.json();
-          console.log('data--',  data);
           return data;
         } catch (error) {
           console.error('Error fetching surahs:', error);
@@ -38,11 +37,9 @@ class Surah {
     };
 
     async getAllAyah () {
-        console.log("Im here surah rest")
         try {
           const response = await fetch(`${this.baseUrl}/quran/ayat`);
           const data = await response.json();
-          console.log('data ayat w--',  data);
           return data;
         } catch (error) {
           console.error('Error fetching surahs:', error);
@@ -51,11 +48,9 @@ class Surah {
     };
 
     async getAyahBySuraId (surahId: number) {
-        console.log("Im here ayah rest by surah id:", surahId);
         try {
           const response = await fetch(`${this.baseUrl}/quran/ayat/${surahId}`);
           const data = await response.json();
-          console.log('data ayat w--',  data);
           return data;
         } catch (error) {
           console.error('Error fetching surahs:', error);

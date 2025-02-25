@@ -17,21 +17,24 @@ export default {
   "platforms": ["ios", "android", "web"],
   "ios": {
     "supportsTablet": true,
-    "bundleIdentifier": "com.gust0.myajwaapps"
+    "bundleIdentifier": "com.gust0.ulil-albab",
+    "infoPlist": {
+      "ITSAppUsesNonExemptEncryption": false
+    }
   },
   "android": {
     "adaptiveIcon": {
       "foregroundImage": "./assets/adaptive-icon.png",
       "backgroundColor": "#ffffff"
     },
-    "package": "com.gust0.myajwaapps"
+    "package": "com.gust0.ulil-albab"
   },
   "web": {
     "favicon": "./assets/favicon.png"
   },
   "extra": {
     "eas": {
-      "projectId": "12676be4-f13a-4223-8533-08ebe3cb3ec4"
+      "projectId": "e3915484-5ebe-4d61-be6a-a2416f41546d"
     }
   },
   "plugins": [
