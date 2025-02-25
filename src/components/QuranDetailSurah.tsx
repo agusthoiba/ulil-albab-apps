@@ -10,6 +10,14 @@ import { getAyahAsync, addUser, removeUser } from '../reducer/ayahSlice';
 // import { Ayat } from '../../models/Quran';
 
 
+const Bismi = () => {
+  return (
+    <View style={Styles.bismillah}>
+      <Text style={Styles.arabicText}>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</Text>
+    </View>
+  )
+}
+
 const QuranDetailSurah = ({ surah }) => {
   log.info('aku d component detail surah')
   log.info('surah: ', surah)
@@ -36,9 +44,7 @@ const QuranDetailSurah = ({ surah }) => {
   return (
     <View style={Styles.content}>
 
-      <View style={Styles.bismillah}>
-        <Text style={Styles.arabicText}>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</Text>
-      </View>
+      { [1,9].includes(surah.number) ? null : <Bismi /> }
 
       <FlatList
         data={items}
