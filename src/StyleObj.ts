@@ -250,8 +250,7 @@ const StyleObj = {
     fontFamily: 'UthmanicArab-Regular',
   },
   arabicNumberIndex: {
-    marginRight: 20,
-    paddingRight: 20,
+    paddingRight: 10,
     color: 'saddlebrown',
   },
   arabicNumberCircle: {

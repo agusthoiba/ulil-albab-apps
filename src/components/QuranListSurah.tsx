@@ -1,6 +1,6 @@
 import React, {Component, useCallback, useEffect, useState } from 'react';
 import {Text, View, TextInput, Image, SafeAreaView, FlatList, TouchableOpacity, TouchableHighlight} from 'react-native';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { logger } from "react-native-logs";
 
 const log = logger.createLogger();
@@ -9,7 +9,7 @@ import Styles from '../Style';
 import { QuranListSurahTabProps } from '../navigation/type';
 import { Surah } from '../models/Quran';
 
-import SurahRest from '../rest/Surah.rest';
+import { getSurahAsync } from '../reducer/surahSlice';
 import { ScrollView } from 'react-native-gesture-handler';
 
 type ItemProps = {
@@ -27,33 +27,22 @@ const Item = ({item, onPress, backgroundColor, textColor}: ItemProps) => (
 );
 
 const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
-  const [items, setItems] = useState<Surah[]>([]);
+ // const [items, setItems] = useState<Surah[]>([]);
   const [selectedId, setSelectedId] = useState<string>();
 
-  const getSurah = async () => {
-    const baseUrl = process.env.EXPO_PUBLIC_API_URL;
-    log.info('baseUrl', baseUrl);
-    const surahRest = new SurahRest(baseUrl);
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.surah.data);
+  // const loading = useSelector((state) => state.surah.loading);
+  const error = useSelector((state) => state.surah.error);
 
-    const dataSurah = await surahRest.get();
-    let surahs: Surah[] = [];
-
-    for (let sur of dataSurah) {
-      let suro: Surah =  {
-        Surah: (sur.number).toString(),
-        Ayat: sur.name,
-        Terjemahan: sur.translation,
-        Jumlah_Ayat: sur.numberOfAyahs,
-        Ayat_Arab: sur.nameArab.String
-      }
-      surahs.push(suro)
-    }
-    setItems(surahs);
-  };
-
+  // log.info('items: ', items);
   useEffect(() => {
-    getSurah();
-  }, []);
+    dispatch(getSurahAsync());
+  }, [dispatch]);
+  
+  if (error) {
+    return <View><Text>An error occured</Text></View>
+  }
 
   return (
       <SafeAreaView style={Styles.container}>
@@ -72,25 +61,25 @@ const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
             {items.map(item =>
               <TouchableOpacity onPress={() => 
                   navigation.navigate('QuranDetail', {
-                    surahId: item.Surah,
-                    surahName: item.Ayat
+                    surahId: item.number,
+                    surahName: item.name
                   })
                 }
                 key={item.Surah}
                 style={Styles.surahItem}>
                   
                     <View style={Styles.numberCircle}>
-                      <Text>{item.Surah}</Text>
+                      <Text>{item.number}</Text>
                     </View>
 
                     <View style={Styles.surahInfo}>
                       <View style={Styles.surahNameContainer}>
-                        <Text style={Styles.surahName}> {item.Ayat} </Text>
-                        <Text style={Styles.arabicName}> {item.Ayat_Arab} </Text> 
+                        <Text style={Styles.surahName}> {item.name} </Text>
+                        <Text style={Styles.arabicName}> {item.nameArab.String} </Text> 
                       </View>
 
                       <Text style={Styles.description}>
-                          {item.Terjemahan} ({String(item.Jumlah_Ayat)} ayat)
+                          {item.translation} ({String(item.numberOfAyahs)} ayat)
                         </Text>
                     </View>
                     

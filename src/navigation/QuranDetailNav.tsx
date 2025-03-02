@@ -1,30 +1,26 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { QuranDetailSurahScreenProps } from './type';
 
-import StyleObj from '../StyleObj';
 import Styles from '../Style';
-import { useSurahData } from '../reducer/useSurahData';
-// import QuranDetailSurahScreen from '../components/QuranDetailSurah';
 import { SurahScreen } from '../components/QuranDetailScreen';
-import QuranDetailSurah from '../components/QuranDetailSurah';
+import { getSurahAsync } from '../reducer/surahSlice';
 
 const QuranDetailTab = createMaterialTopTabNavigator();
 
-const QuranHeader = () => {
-  // ... Header component code (same as before)
-  return (
-    <View>
-      {/* Add your header content here */}
-    </View>
-  );
-};
-
 export const QuranTabDetail = (props: QuranDetailSurahScreenProps) => {
-
-  console.log("props route", props.route);
-  const { surahs, loading, error } = useSurahData();
+    const dispatch = useDispatch();
+    const surahs = useSelector((state) => state.surah.data);
+    const loading = useSelector((state) => state.surah.loading);
+    const error = useSelector((state) => state.surah.error);
+  
+    // log.info('items: ', items);
+    useEffect(() => {
+      dispatch(getSurahAsync());
+    }, [dispatch]);
 
   const renderTabs = useCallback(() => {
     if (loading) {
@@ -85,7 +81,6 @@ export const QuranTabDetail = (props: QuranDetailSurahScreenProps) => {
 
   return (
     <View style={Styles.container}>
-      <QuranHeader />
       {renderTabs()}
     </View>
   );

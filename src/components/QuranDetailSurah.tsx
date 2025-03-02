@@ -6,7 +6,7 @@ import { logger } from "react-native-logs";
 const log = logger.createLogger();
 
 import Styles from '../Style';
-import { getAyahAsync, addUser, removeUser } from '../reducer/ayahSlice';
+import { getAyahAsync } from '../reducer/ayahSlice';
 // import { Ayat } from '../../models/Quran';
 
 
