@@ -1,3 +1,6 @@
+import { text } from "@fortawesome/fontawesome-svg-core";
+import { height } from "@fortawesome/free-solid-svg-icons/faHome";
+
 const StyleObj = {
   container: {
     flex: 1,
@@ -12,7 +15,7 @@ const StyleObj = {
     // borderBottomRightRadius: 30,
   },
   headerTitle: {
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: 'bold',
     color: '#fff',
   },
@@ -31,14 +34,17 @@ const StyleObj = {
   },
   logo: {
     width: 80,
+    height: 48,
     aspectRatio: 1,
     // marginBottom: 10,
     // marginTop: 20,
   },
   locationContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 10,
+    margin: 10,
+    padding: 10,
   },
   location: {
     color: '#fff',
@@ -64,8 +70,9 @@ const StyleObj = {
     fontFamily: 'Roboto-Regular',
   },
   date: {
-    color: '#E0F2F1',
+    color: 'grey',
     fontSize: 14,
+    textAlign: 'center',
     fontFamily: 'Roboto-Regular',
   },
   featuresGrid: {
@@ -247,6 +254,13 @@ const StyleObj = {
     textAlign: 'right',
     marginBottom: 8,
     lineHeight: 40,
+    fontFamily: 'UthmanicArab-Regular',
+  },
+  arabicTextCaption: {
+    fontSize: 22,
+    textAlign: 'center',
+    marginBottom: 8,
+    lineHeight: 30,
     fontFamily: 'UthmanicArab-Regular',
   },
   arabicNumberIndex: {

@@ -4,7 +4,7 @@ export default {
   "jsEngine": "hermes",
   "version": "1.0.0",
   "orientation": "portrait",
-  "icon": "./assets/icon.png",
+  "icon": "./assets/logo_ulil_albab_sq_bg_half.png",
   "userInterfaceStyle": "light",
   "splash": {
     "image": "./assets/logo_ulil_albab-photoroom.png",
@@ -27,10 +27,10 @@ export default {
       "foregroundImage": "./assets/adaptive-icon.png",
       "backgroundColor": "#ffffff"
     },
-    "package": "com.gust0.ulil-albab"
+    "package": "com.gust0.ulil_albab"
   },
   "web": {
-    "favicon": "./assets/favicon.png"
+    "favicon": "./assets/logo_ulil_albab_sq_bg_half.png"
   },
   "extra": {
     "eas": {

@@ -18,15 +18,22 @@ const Dashboard = ({route, navigation}: HomeScreenProps) => {
       <ScrollView>
         <View style={Styles.header}>
             <Image 
-              source={require('../../assets/logo_ulil_albab-photoroom.png')}
+              source={require('../../assets/logo_ulil_albab-photoroom-80.png')}
               style={Styles.logo} 
-              resizeMode="contain"
             />
+            <Text style={Styles.headerTitle}>Ulil Albab</Text>
         </View>
 
-        <View>
-          <Text style={Styles.headerTitle}>Ulil Albab</Text>
+        <View style={Styles.locationContainer}>
+          <Text style={Styles.arabicTextCaption}>
+            اِنَّ فِيْ خَلْقِ السَّمٰوٰتِ وَالْاَرْضِ وَاخْتِلَافِ الَّيْلِ وَالنَّهَارِ لَاٰيٰتٍ لِّاُولِى الْاَلْبَابِۙ 
+          </Text>
+          <Text style={Styles.date}>
+            Sesungguhnya dalam penciptaan langit dan bumi, dan pergantian malam dan siang terdapat tanda-tanda (kebesaran Allah) bagi orang yang berakal (QS. Ali Imran: 190)
+          </Text>
         </View>
+
+
 
         <View style={Styles.featuresGrid}>
           {/* Features Grid */}
