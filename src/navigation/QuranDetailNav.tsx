@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, Text, ActivityIndicator } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { QuranDetailSurahScreenProps } from './type';
-
 import Styles from '../Style';
 import { SurahScreen } from '../components/QuranDetailScreen';
 import { getSurahAsync } from '../reducer/surahSlice';
@@ -17,7 +16,6 @@ export const QuranTabDetail = (props: QuranDetailSurahScreenProps) => {
     const loading = useSelector((state) => state.surah.loading);
     const error = useSelector((state) => state.surah.error);
   
-    // log.info('items: ', items);
     useEffect(() => {
       dispatch(getSurahAsync());
     }, [dispatch]);
@@ -39,8 +37,10 @@ export const QuranTabDetail = (props: QuranDetailSurahScreenProps) => {
       );
     }
 
-    let surahReverse = [];
-    let start = surahs.length - 1
+
+    console.log("props.route.params:", props.route.params)
+    let surahReverse = []
+    let start = surahs.length - 1;
     for (let i = start; i > -1; i--) {
       surahReverse.push(surahs[i]);
     }
@@ -69,12 +69,13 @@ export const QuranTabDetail = (props: QuranDetailSurahScreenProps) => {
           <QuranDetailTab.Screen
             key={surah.number}
             name={`Surah${surah.number}`}
-            children={() => <SurahScreen surah={surah} />}
+            children={() => <SurahScreen surah={surah}  />}
             options={{
-              tabBarLabel: surah.name,
+              tabBarLabel: surah.name
             }}
           />
         ))}
+
       </QuranDetailTab.Navigator>
     )
   }, [surahs, loading, error])

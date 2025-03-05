@@ -11,13 +11,14 @@ import { faPray } from '@fortawesome/free-solid-svg-icons/faPray';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons/faUserCircle';
 import {  Home, Book, FileText, Calendar, Settings } from 'lucide-react'
 
-import { RootStackParamList, BottomTabParamList, QuranTabParamList } from './type'
+import { RootStackParamList, BottomTabParamList, QuranTabParamList, QuranJuzTabParamList } from './type'
 import Dashboard from '../components/Dashboard';
 import StyleObj from '../StyleObj';
 import Styles from '../Style';
 import QuranListSurah from '../components/QuranListSurah';
 import QuranListJuz from '../components/QuranListJuz';
 import { QuranTabDetail } from './QuranDetailNav'
+import { QuranTabJuzDetail } from './QuranDetailJuzNav'
 
 const RootStack = createStackNavigator<RootStackParamList>();
 const QuranTab = createMaterialTopTabNavigator<QuranTabParamList>();
@@ -113,12 +114,18 @@ const Navigation = () => {
                 headerBackTitleStyle: StyleObj.headerBackTitle
               })}
             />
-            {<RootStack.Screen name="QuranDetail" component={QuranTabDetail} 
+            <RootStack.Screen name="QuranDetail" component={QuranTabDetail} 
               options={({ route }) => ({
                 title: 'Surah',
                 name: route.params.surahName,
                 headerStyle: StyleObj.header
-              })} />}
+              })} />
+            <RootStack.Screen name="QuranDetailJuz" component={QuranTabJuzDetail} 
+              options={({ route }) => ({
+                title: 'Juz',
+                name: route.params.juzId,
+                headerStyle: StyleObj.header
+              })} />
           </RootStack.Navigator>
         </NavigationContainer>
     );

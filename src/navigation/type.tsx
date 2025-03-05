@@ -9,19 +9,24 @@ export type RootStackParamList = {
   Home: undefined;
   QuranList:  undefined;
   QuranDetail:  {
-    surahId: string
-    surahName: string
+    surahId: string | undefined
+    surahName: string | undefined
+    juzId: number | undefined
   }
 };
 
 export type HomeScreenProps = NativeStackScreenProps<RootStackParamList,"Home">;
 
-
-
 export type QuranTabParamList = {
   QuranListSurah: undefined;
   QuranListJuz: undefined;
   QuranDetail: { surahId: string }
+};
+
+export type QuranJuzTabParamList = {
+  QuranListSurah: undefined;
+  QuranListJuz: undefined;
+  QuranDetailJuz: { juzId: number }
 };
 
 export type QuranDetailTabParamList = {
@@ -46,6 +51,12 @@ export type QuranListSurahTabProps = CompositeScreenProps<
   StackScreenProps<RootStackParamList, "QuranDetail">
 >;
 
-export type QuranListJuzTabProps = MaterialTopTabScreenProps<QuranTabParamList, "QuranListJuz">;
+export type QuranListJuzTabProps =  CompositeScreenProps<
+  MaterialTopTabScreenProps<QuranJuzTabParamList, "QuranListJuz">,
+  StackScreenProps<RootStackParamList, "QuranDetail">
+>;
+
 
 export type QuranDetailSurahScreenProps = NativeStackScreenProps<RootStackParamList, "QuranDetail">;
+
+export type QuranDetailJuzScreenProps = NativeStackScreenProps<RootStackParamList, "QuranDetail">;

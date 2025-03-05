@@ -42,7 +42,7 @@ class Surah {
           const data = await response.json();
           return data;
         } catch (error) {
-          console.error('Error fetching surahs:', error);
+          console.error('Error fetching ayahs:', error);
           return [];
         }
     };

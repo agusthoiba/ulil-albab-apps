@@ -1,20 +1,13 @@
 import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 
-import { SurahResp } from '../models/Quran';
+import { SurahResp, Juz } from '../models/Quran';
 import  QuranDetailSurah from './QuranDetailSurah';
-import { QuranDetailSurahScreenProps } from '../navigation/type';
 import Styles from '../Style';
 
 interface SurahScreenProps {
   surah: SurahResp;
 }
-
-interface QuranDetaiProps {
-  qDetailProps: QuranDetailSurahScreenProps;
-}
-
-// const newProps = QuranDetailSurahScreenProps<QuranDetaiProps>
 
 export const SurahScreen: React.FC<SurahScreenProps> = ({ surah }) => {
  

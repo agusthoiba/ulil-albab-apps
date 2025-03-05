@@ -1,24 +1,13 @@
 import React, {Component} from 'react';
 import { Text, View, Image, FlatList, TouchableOpacity} from 'react-native';
-import { QuranListSurahTabProps } from '../navigation/type';
+import { QuranListJuzTabProps } from '../navigation/type';
 import Styles from '../Style';
 import { DATA_JUZ } from '../data/Quran';
 
-const QuranListJuz = ({route, navigation}: QuranListSurahTabProps) => {
+const QuranListJuz = ({route, navigation}:QuranListJuzTabProps) => {
   return (
     
       <View style={Styles.container}>
-        {/* Header */}
-        <View style={Styles.header}>
-          <Text style={Styles.headerTitle}>Al-Quran</Text>
-            <View style={Styles.headerIcons}>
-              <Text style={Styles.headerIcon}>🔖</Text>
-              <Text style={Styles.headerIcon}>⚙️</Text>
-              <TouchableOpacity style={Styles.searchButton}>
-                <Text style={Styles.searchButtonText}>🔍 Cari</Text>
-              </TouchableOpacity>
-            </View>
-        </View>
 
         <View>
         <FlatList
@@ -26,8 +15,8 @@ const QuranListJuz = ({route, navigation}: QuranListSurahTabProps) => {
           renderItem={
             ({item}) =>
               <TouchableOpacity onPress={() => 
-                navigation.navigate('QuranDetail', {
-                  surahId: '1'
+                navigation.navigate('QuranDetailJuz', {
+                  juzId: item.id
                 })
               }
               style={Styles.surahItem}> 

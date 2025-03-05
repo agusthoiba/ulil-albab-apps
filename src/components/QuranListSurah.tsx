@@ -48,13 +48,13 @@ const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
       <SafeAreaView style={Styles.container}>
 
         {/* Search Input */}
-        <View style={Styles.searchContainer}>
+        {/*<View style={Styles.searchContainer}>
           <TextInput 
             style={Styles.searchInput}
             placeholder="Cari Nama Surah"
             placeholderTextColor="#999"
           />
-        </View>  
+        </View> */}
 
         {/* List Surah */}
           <ScrollView style={Styles.surahList}>

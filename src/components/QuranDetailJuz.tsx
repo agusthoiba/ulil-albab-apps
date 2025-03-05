@@ -6,7 +6,8 @@ import { logger } from "react-native-logs";
 const log = logger.createLogger();
 
 import Styles from '../Style';
-import { getAyahAsync } from '../reducer/ayahSlice';
+import { getAllAyahAsync } from '../reducer/ayahAllSlice';
+// import { Ayat } from '../../models/Quran';
 
 
 const Bismi = () => {
@@ -17,23 +18,25 @@ const Bismi = () => {
   )
 }
 
-const QuranDetailSurah = ({ surah }) => {
-  log.info('aku d component detail surah')
-  log.info('surah: ', surah)
+const QuranDetailJuz = ({ juz }) => {
+  log.info('aku d component detail juz')
+  log.info('juz: ',juz)
 
   const dispatch = useDispatch();
-  const ayahs = useSelector((state) => state.ayah.data);
-  const loading = useSelector((state) => state.ayah.loading);
-  const error = useSelector((state) => state.ayah.error);
+  const ayahs = useSelector((state) => state.ayahAll.data);
+  const loading = useSelector((state) => state.ayahAll.loading);
+  const error = useSelector((state) => state.ayahAll.error);
 
   // const [items, setItems] = useState<Ayat[]>([]);
 
   const items = ayahs.filter((a) => {
-    return a.suraId == surah.number
+    return a.juzId.Int64 == juz.id
   })
 
+  log.info('items[0]: ',items[0])
+
   useEffect(() => {
-    dispatch(getAyahAsync(surah.number));
+    dispatch(getAllAyahAsync());
   }, [dispatch]);
 
   if (error) {
@@ -43,7 +46,7 @@ const QuranDetailSurah = ({ surah }) => {
   return (
     <View style={Styles.content}>
 
-      { [1,9].includes(surah.number) ? null : <Bismi /> }
+      {/* [1,9].includes(surah.number) ? null : <Bismi /> */}
 
       <FlatList
         data={items}
@@ -65,4 +68,4 @@ const QuranDetailSurah = ({ surah }) => {
   )
 }
 
-export default QuranDetailSurah;
+export default QuranDetailJuz;

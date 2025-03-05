@@ -2,7 +2,8 @@ import { Text } from 'react-native';
 import { Provider } from 'react-redux'
 import { useFonts } from 'expo-font'; 
 
-import store from './reducer/store';
+import { persistor, store } from './reducer/store';
+import { PersistGate } from 'redux-persist/integration/react';
 import Navigation from './navigation/index';
 
 // <LogContext.Provider value={log}>
@@ -22,7 +23,9 @@ export default function App() {
 
   return (   
     <Provider store={store}>
-      <Navigation />
+      <PersistGate loading={null} persistor={persistor}>
+        <Navigation />
+      </PersistGate>
     </Provider>
   );
 }
