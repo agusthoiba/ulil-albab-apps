@@ -46,19 +46,25 @@ const QuranDetailJuz = ({ juz }) => {
   return (
     <View style={Styles.content}>
 
-      {/* [1,9].includes(surah.number) ? null : <Bismi /> */}
-
       <FlatList
         data={items}
         renderItem={
           ({ item, index }) =>
-            <View style={Styles.verse}>
-              <Text style={Styles.arabicText}>{item.ayahText} 
-                <Text style={Styles.arabicNumberIndex} >{(index + 1).toLocaleString("ar-EG")}</Text> 
-              </Text>
-                  
-              <Text style={Styles.transliteration}>{item.ReadText}</Text>
-              <Text style={Styles.translation}>{item.indoText}</Text>
+            <View>
+              <View>
+                {  index == 0 && item.verseID == 1 && (![1,9].includes(item.suraId)) ? <Bismi /> : null }
+              </View>
+              <View style={Styles.verse}>
+                <Text style={Styles.arabicText}>{item.ayahText} 
+                  <Text style={Styles.arabicNumberIndex} >{(item.verseID).toLocaleString("ar-EG")}</Text> 
+                </Text>
+                    
+                <Text style={Styles.transliteration}>{item.ReadText}</Text>
+                <Text style={Styles.translation}>{item.indoText}</Text>
+              </View>
+              <View>
+                { items[index + 1] && (items[index].suraId > items[index + 1].suraId) ? <Bismi /> : null }
+              </View>
             </View>
         }
         keyExtractor={item => String(item.id)}

@@ -240,6 +240,7 @@ const StyleObj = {
   },
   verse: {
     marginBottom: 10,
+    paddingTop: 10,
     paddingBottom: 10,
     paddingLeft: 16,
     paddingRight: 16,
