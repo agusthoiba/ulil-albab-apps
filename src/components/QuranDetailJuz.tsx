@@ -7,7 +7,7 @@ const log = logger.createLogger();
 
 import Styles from '../Style';
 import { getAllAyahAsync } from '../reducer/ayahAllSlice';
-// import { Ayat } from '../../models/Quran';
+import { getSurahAsync } from '../reducer/surahSlice';
 
 
 const Bismi = () => {
@@ -18,28 +18,46 @@ const Bismi = () => {
   )
 }
 
+const SurahInfoDetailnBismi = ({ surah }) => {
+  log.info("surah: ", surah)
+  return (
+    <View>
+      <View style={Styles.surahInfoDetail}>
+        <Text style={Styles.surahType}>{surah.revelation}</Text>
+        <Text style={Styles.surahTitle}>{surah.nameArab.String}</Text>
+        <Text style={Styles.ayahCount}>{surah.numberOfAyahs} Ayat</Text>
+      </View>
+      {(![1,9].includes(surah.number)) ? <Bismi /> : null}
+    </View>
+  )
+}
+
 const QuranDetailJuz = ({ juz }) => {
   log.info('aku d component detail juz')
   log.info('juz: ',juz)
 
   const dispatch = useDispatch();
   const ayahs = useSelector((state) => state.ayahAll.data);
-  const loading = useSelector((state) => state.ayahAll.loading);
   const error = useSelector((state) => state.ayahAll.error);
-
-  // const [items, setItems] = useState<Ayat[]>([]);
+ 
+  const surahs = useSelector((state) => state.surah.data);
+  const errorSurah = useSelector((state) => state.surah.error);
 
   const items = ayahs.filter((a) => {
     return a.juzId.Int64 == juz.id
   })
 
-  log.info('items[0]: ',items[0])
-
+  const handleFindSurah = (item) => {
+    log.info("item on handleFindSurah: " , item)
+    return surahs.find((sur) => sur.number == item.suraId);
+  }
+ 
   useEffect(() => {
     dispatch(getAllAyahAsync());
+    dispatch(getSurahAsync())
   }, [dispatch]);
 
-  if (error) {
+  if (error || errorSurah) {
     return <View><Text>An error occured</Text></View>
   }
 
@@ -52,7 +70,7 @@ const QuranDetailJuz = ({ juz }) => {
           ({ item, index }) =>
             <View>
               <View>
-                {  index == 0 && item.verseID == 1 && (![1,9].includes(item.suraId)) ? <Bismi /> : null }
+                {  item.verseID == 1 ? <SurahInfoDetailnBismi surah={handleFindSurah(item)} /> : null  }
               </View>
               <View style={Styles.verse}>
                 <Text style={Styles.arabicText}>{item.ayahText} 
@@ -62,9 +80,7 @@ const QuranDetailJuz = ({ juz }) => {
                 <Text style={Styles.transliteration}>{item.ReadText}</Text>
                 <Text style={Styles.translation}>{item.indoText}</Text>
               </View>
-              <View>
-                { items[index + 1] && (items[index].suraId > items[index + 1].suraId) ? <Bismi /> : null }
-              </View>
+
             </View>
         }
         keyExtractor={item => String(item.id)}

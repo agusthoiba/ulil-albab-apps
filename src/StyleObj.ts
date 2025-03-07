@@ -210,7 +210,8 @@ const StyleObj = {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 5,
+    paddingLeft: 5,
+    paddingRight: 5,
     backgroundColor: '#E8F5F3',
   },
   surahType: {

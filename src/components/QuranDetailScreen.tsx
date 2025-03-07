@@ -18,7 +18,6 @@ export const SurahScreen: React.FC<SurahScreenProps> = ({ surah }) => {
         <Text style={Styles.surahTitle}>{surah.nameArab.String}</Text>
         <Text style={Styles.ayahCount}>{surah.numberOfAyahs} Ayat</Text>
       </View>
-      {/* Add your Quran content here */}
 
       <QuranDetailSurah surah={surah}/>
     </ScrollView>
