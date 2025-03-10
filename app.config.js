@@ -2,7 +2,7 @@ export default {
   "name": "Ulil Albab",
   "slug": "ulil-albab",
   "jsEngine": "hermes",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "orientation": "portrait",
   "icon": "./assets/logo_ulil_albab_sq_bg_half.png",
   "userInterfaceStyle": "light",
@@ -27,7 +27,9 @@ export default {
       "foregroundImage": "./assets/adaptive-icon.png",
       "backgroundColor": "#ffffff"
     },
-    "package": "com.gust0.ulil_albab"
+    "package": "com.gust0.ulil_albab",
+    "permissions": ["INTERNET"],
+    "usesCleartextTraffic": true
   },
   "web": {
     "favicon": "./assets/logo_ulil_albab_sq_bg_half.png"
@@ -47,5 +49,5 @@ export default {
       [
         "expo-asset"
       ]
-    ]
+  ]
 }

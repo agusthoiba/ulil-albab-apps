@@ -18,15 +18,9 @@ const Bismi = () => {
 }
 
 const QuranDetailSurah = ({ surah }) => {
-  log.info('aku d component detail surah')
-  log.info('surah: ', surah)
-
   const dispatch = useDispatch();
   const ayahs = useSelector((state) => state.ayah.data);
-  const loading = useSelector((state) => state.ayah.loading);
   const error = useSelector((state) => state.ayah.error);
-
-  // const [items, setItems] = useState<Ayat[]>([]);
 
   const items = ayahs.filter((a) => {
     return a.suraId == surah.number

@@ -1,6 +1,4 @@
 import { registerRootComponent } from 'expo';
-import { Provider } from 'react-redux'
-
 
 console.log("This is a test console log in App.js");
 

@@ -19,7 +19,6 @@ const Bismi = () => {
 }
 
 const SurahInfoDetailnBismi = ({ surah }) => {
-  log.info("surah: ", surah)
   return (
     <View>
       <View style={Styles.surahInfoDetail}>
@@ -33,9 +32,6 @@ const SurahInfoDetailnBismi = ({ surah }) => {
 }
 
 const QuranDetailJuz = ({ juz }) => {
-  log.info('aku d component detail juz')
-  log.info('juz: ',juz)
-
   const dispatch = useDispatch();
   const ayahs = useSelector((state) => state.ayahAll.data);
   const error = useSelector((state) => state.ayahAll.error);
@@ -48,7 +44,6 @@ const QuranDetailJuz = ({ juz }) => {
   })
 
   const handleFindSurah = (item) => {
-    log.info("item on handleFindSurah: " , item)
     return surahs.find((sur) => sur.number == item.suraId);
   }
  
