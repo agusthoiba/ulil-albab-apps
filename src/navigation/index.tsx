@@ -13,10 +13,11 @@ import {  Home, Book, FileText, Calendar, Settings } from 'lucide-react'
 
 import { RootStackParamList, BottomTabParamList, QuranTabParamList, QuranJuzTabParamList } from './type'
 import Dashboard from '../components/Dashboard';
-import StyleObj from '../StyleObj';
-import Styles from '../Style';
 import QuranListSurah from '../components/QuranListSurah';
 import QuranListJuz from '../components/QuranListJuz';
+import Setting from '../components/Setting';
+import StyleObj from '../StyleObj';
+import Styles from '../Style';
 import { QuranTabDetail } from './QuranDetailNav'
 import { QuranTabJuzDetail } from './QuranDetailJuzNav'
 
@@ -67,7 +68,7 @@ const HomeComp = () => {
         tabBarActiveTintColor: '#1fb89d' 
       }} />
 
-      <BottomTab.Screen name="Settings" component={QuranList}  options={{ 
+      <BottomTab.Screen name="Settings" component={Setting}  options={{ 
         title: 'Settings',
         tabBarIcon: ({ color, size }) => (
           <FontAwesomeIcon icon={faUserCircle} color={color} size={size} />
@@ -111,6 +112,7 @@ const Navigation = () => {
                 headerBackButtonDisplayMode: 'minimal', 
                 title: 'Al-Quran',
                 headerStyle: StyleObj.header,
+                headerTintColor: '#fff',
                 headerBackTitleStyle: StyleObj.headerBackTitle
               })}
             />
@@ -118,14 +120,23 @@ const Navigation = () => {
               options={({ route }) => ({
                 title: 'Surah',
                 name: route.params.surahName,
-                headerStyle: StyleObj.header
+                headerStyle: StyleObj.header,
+                headerTintColor: '#fff',
+                headerBackTitleStyle: StyleObj.headerBackTitle
               })} />
             <RootStack.Screen name="QuranDetailJuz" component={QuranTabJuzDetail} 
               options={({ route }) => ({
                 title: 'Juz',
                 name: route.params.juzId,
-                headerStyle: StyleObj.header
+                headerStyle: StyleObj.header,
+                headerTintColor: '#fff',
               })} />
+            <RootStack.Screen name="Setting" component={Setting} options={{
+              title: 'Settings',
+              name: 'Settings',
+              headerStyle: StyleObj.header,
+              headerTintColor: '#fff',
+            }}/>
           </RootStack.Navigator>
         </NavigationContainer>
     );

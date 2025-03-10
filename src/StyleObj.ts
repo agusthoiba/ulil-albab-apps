@@ -16,11 +16,10 @@ const StyleObj = {
   },
   headerTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
-    color: '#fff',
+    color: 'white',
   },
   headerBackTitle: {
-    color: '#000',
+    color: 'white',
   },
 
   headerIcons: {
@@ -35,9 +34,9 @@ const StyleObj = {
   logo: {
     width: 80,
     height: 48,
-    aspectRatio: 1,
-    // marginBottom: 10,
-    // marginTop: 20,
+    //aspectRatio: 1,
+    marginBottom: 10,
+    marginTop: 80,
   },
   locationContainer: {
     flexDirection: 'column',
