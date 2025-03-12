@@ -1,7 +1,6 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-// import storageSession from 'redux-persist/lib/storage/session'
+import storage from "@react-native-async-storage/async-storage";
 import surahReducer from './surahSlice';
 import ayahReducer from './ayahSlice';
 import ayahAllReducer from './ayahAllSlice';
