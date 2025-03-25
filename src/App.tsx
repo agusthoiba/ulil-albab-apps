@@ -3,10 +3,20 @@ import * as SplashScreen from 'expo-splash-screen';
 import { Provider } from 'react-redux'
 import { useFonts } from 'expo-font'; 
 
-import { persistor, store } from './reducer/store';
+import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import Navigation from './navigation/index';
+import store from '../src/reducer/store';
 
+const persistor = persistStore(store);
+
+persistor.subscribe(() => {
+  const { bootstrapped } = persistor.getState()
+  if (bootstrapped) {
+    console.log('Rehydration complete')
+    console.log('Current state:', store.getState())
+  }
+})
 // <LogContext.Provider value={log}>
 // </LogContext.Provider>
 
@@ -28,6 +38,9 @@ export default function App() {
     return null;
   }
 
+
+  //persistor.purge(); // optional: clear storage if needed
+  //persistor.flush(); // optional: flush storage to make sure state is persisted immediately
 
   return (   
     <Provider store={store}>

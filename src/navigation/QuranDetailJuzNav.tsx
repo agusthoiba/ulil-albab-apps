@@ -27,13 +27,7 @@ export const QuranTabJuzDetail = (props: QuranDetailJuzScreenProps) => {
           tabBarIndicatorStyle: Styles.tabIndicator,
           tabBarLabelStyle: Styles.tabLabel,
           tabBarActiveTintColor: '#1fb89d',
-          tabBarInactiveTintColor: '#8D8D8D',
-          lazy: true, // Only render screens when they're active
-          lazyPlaceholder: () => (
-            <View style={Styles.loadingContainer}>
-              <ActivityIndicator size="small" color="#009688" />
-            </View>
-          )
+          tabBarInactiveTintColor: '#8D8D8D'
         })}
         >
 

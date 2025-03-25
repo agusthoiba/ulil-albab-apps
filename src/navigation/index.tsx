@@ -18,7 +18,9 @@ import QuranListJuz from '../components/QuranListJuz';
 import Setting from '../components/Setting';
 import StyleObj from '../StyleObj';
 import Styles from '../Style';
-import { QuranTabDetail } from './QuranDetailNav'
+// import { QuranTabDetail } from './QuranDetailNav'
+
+import { QuranDetailTop } from '../components/QuranDetailTop'
 import { QuranTabJuzDetail } from './QuranDetailJuzNav'
 
 const RootStack = createStackNavigator<RootStackParamList>();
@@ -107,6 +109,7 @@ const Navigation = () => {
             <RootStack.Screen name="Home" component={HomeComp} options={{
               headerShown: false
             }}/>
+
             <RootStack.Screen name="QuranList" component={QuranList} 
               options={({ route }) => ({
                 headerBackButtonDisplayMode: 'minimal', 
@@ -116,7 +119,8 @@ const Navigation = () => {
                 headerBackTitleStyle: StyleObj.headerBackTitle
               })}
             />
-            <RootStack.Screen name="QuranDetail" component={QuranTabDetail} 
+
+            <RootStack.Screen name="QuranDetail" component={QuranDetailTop} 
               options={({ route }) => ({
                 title: 'Surah',
                 name: route.params.surahName,
@@ -124,6 +128,7 @@ const Navigation = () => {
                 headerTintColor: '#fff',
                 headerBackTitleStyle: StyleObj.headerBackTitle
               })} />
+
             <RootStack.Screen name="QuranDetailJuz" component={QuranTabJuzDetail} 
               options={({ route }) => ({
                 title: 'Juz',

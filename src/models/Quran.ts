@@ -25,6 +25,16 @@ export type Ayat = {
     Terjemahan: string;
 }
 
+export type Ayah = {
+    id:number,
+    suraId:number,
+    ayahText:string,
+    indoText:string,
+    ReadText:string,
+    juzId:Juz,
+    verseID:number
+}
+
 export type Juz = {
     id: number;
     start: string;

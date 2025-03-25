@@ -1,8 +1,11 @@
 import React from 'react';
-import {ScrollView, Text, View, Image, TouchableOpacity} from 'react-native';
-import Styles from '../Style';
+import {ScrollView, Text, View, Image, TouchableOpacity, ActivityIndicator} from 'react-native';
 
+import Styles from '../Style';
 import { HomeScreenProps } from '../navigation/type';
+
+import { logger } from "react-native-logs";
+const log = logger.createLogger();
 
 const features = [
   { id: 1, title: 'Al-Quran', icon: '📖', route: 'QuranList' },
@@ -11,10 +14,39 @@ const features = [
   { id: 4, title: 'Sains Quran', icon: '🕌', route: 'QuranList' }
 ]
 
-const Dashboard = ({route, navigation}: HomeScreenProps) => {
+/*const SyncSurahData = () => {
+  let { error, isFetching  } = useGetSurahQuery();
 
+  if (isFetching) {
+    return <ActivityIndicator size="large" style={Styles.loader} />;
+  }
+
+  if (error) {
+    log.error("error", error)
+    return <View><Text>An error occured while load surah</Text></View>
+  }
+}
+
+const SyncAyahData = () => {
+  let { error, isFetching  } = useGetAyahQuery();
+
+  if (isFetching) {
+    return <ActivityIndicator size="large" style={Styles.loader} />;
+  }
+
+  if (error) {
+    log.error("error", error)
+    return <View><Text>An error occured while load ayat</Text></View>
+  }
+}*/
+
+const Dashboard = ({route, navigation}: HomeScreenProps) => {
+  log.info('baseUrl: ', process.env.EXPO_PUBLIC_API_URL)
   return (
     <View style={Styles.container}>
+      {/*<SyncSurahData />*/}
+      {/*<SyncAyahData />*/}
+
       <ScrollView>
         <View style={Styles.header}>
             <Image 

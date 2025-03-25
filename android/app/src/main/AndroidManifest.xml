@@ -24,7 +24,7 @@
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:scheme="com.gust0.myajwaapps"/>
+        <data android:scheme="com.gust0.ulil_albab"/>
         <data android:scheme="exp+ulil-albab"/>
       </intent-filter>
     </activity>

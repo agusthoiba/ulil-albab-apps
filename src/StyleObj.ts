@@ -9,8 +9,8 @@ const StyleObj = {
   },
   header: {
     backgroundColor: '#00A884',
-    padding: 20,
-    alignItems: 'center',
+    //padding: 20,
+    // alignItems: 'center',
     // borderBottomLeftRadius: 30,
     // borderBottomRightRadius: 30,
   },
@@ -291,6 +291,10 @@ const StyleObj = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  loader: {
+    marginTop: 'auto',
+    marginBottom: 'auto',
   },
   errorContainer: {
     flex: 1,

@@ -32,28 +32,56 @@ const SurahInfoDetailnBismi = ({ surah }) => {
 }
 
 const QuranDetailJuz = ({ juz }) => {
-  const dispatch = useDispatch();
   const ayahs = useSelector((state) => state.ayahAll.data);
   const error = useSelector((state) => state.ayahAll.error);
+
+  if (ayahs.length === 0) {
+    const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(getAllAyahAsync());
+    }, [dispatch]);
+  }
  
   const surahs = useSelector((state) => state.surah.data);
   const errorSurah = useSelector((state) => state.surah.error);
+
+  if (surahs.length === 0) {
+    const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(getSurahAsync());
+    }, [dispatch]);
+  }
 
   const items = ayahs.filter((a) => {
     return a.juzId.Int64 == juz.id
   })
 
-  const handleFindSurah = (item) => {
-    return surahs.find((sur) => sur.number == item.suraId);
-  }
- 
-  useEffect(() => {
-    dispatch(getAllAyahAsync());
-    dispatch(getSurahAsync())
-  }, [dispatch]);
+
 
   if (error || errorSurah) {
     return <View><Text>An error occured</Text></View>
+  }
+
+  const keyExtractor = item => String(item.id)
+  const renderItem =  ({ item, index }) =>
+    <View>
+      <View>
+        {  item.verseID == 1 ? <SurahInfoDetailnBismi surah={handleFindSurah(item)} /> : null  }
+      </View>
+      <View style={Styles.verse}>
+        <Text style={Styles.arabicText}>{item.ayahText} 
+          <Text style={Styles.arabicNumberIndex} >{(item.verseID).toLocaleString("ar-EG")}</Text> 
+        </Text>
+            
+        <Text style={Styles.transliteration}>{item.ReadText}</Text>
+        <Text style={Styles.translation}>{item.indoText}</Text>
+      </View>
+
+    </View>
+
+
+  const handleFindSurah = (item) => {
+    return surahs.find((sur) => sur.number == item.suraId);
   }
 
   return (
@@ -61,24 +89,9 @@ const QuranDetailJuz = ({ juz }) => {
 
       <FlatList
         data={items}
-        renderItem={
-          ({ item, index }) =>
-            <View>
-              <View>
-                {  item.verseID == 1 ? <SurahInfoDetailnBismi surah={handleFindSurah(item)} /> : null  }
-              </View>
-              <View style={Styles.verse}>
-                <Text style={Styles.arabicText}>{item.ayahText} 
-                  <Text style={Styles.arabicNumberIndex} >{(item.verseID).toLocaleString("ar-EG")}</Text> 
-                </Text>
-                    
-                <Text style={Styles.transliteration}>{item.ReadText}</Text>
-                <Text style={Styles.translation}>{item.indoText}</Text>
-              </View>
-
-            </View>
-        }
-        keyExtractor={item => String(item.id)}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        
       />
 
     </View>

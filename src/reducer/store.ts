@@ -1,33 +1,45 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from "redux-persist";
+import { 
+  configureStore, 
+  combineReducers
+} from '@reduxjs/toolkit';
+
+import { 
+  persistStore, 
+  persistReducer,
+} from "redux-persist";
 import storage from "@react-native-async-storage/async-storage";
 import surahReducer from './surahSlice';
-import ayahReducer from './ayahSlice';
 import ayahAllReducer from './ayahAllSlice';
-
+import ayahReducer from './ayahSlice';
 
 const persistConfig = {
     key: "root",
+    version: 3,
     storage,
   };
 
 const rootReducer = combineReducers({ 
-    surah: surahReducer,
-    ayah: ayahReducer,
-    ayahAll: ayahAllReducer
-  })
+  surah: surahReducer,
+  ayahAll: ayahAllReducer,
+  ayah: ayahReducer
+})
   
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const store = configureStore({
+const store = configureStore({
     reducer: persistedReducer,
     devTools: process.env.NODE_ENV !== "production",
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
-        serializableCheck: {
-          ignoredActions: ["persist/PERSIST", "persist/REHYDRATE"],
-        },
-    }),
+        serializableCheck: false,
+        immutableCheck: false
+      })
 });
 
-export const persistor = persistStore(store);
+export let persistor = persistStore(store);
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+export default store;
+

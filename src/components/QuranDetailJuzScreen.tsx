@@ -12,8 +12,8 @@ interface JuzScreenProps {
 export const JuzScreen: React.FC<JuzScreenProps> = ({ juz }) => {
  
   return (
-    <ScrollView style={Styles.container}>
+    <View style={Styles.container}>
       <QuranDetailJuz juz={juz}/>
-    </ScrollView>
+    </View>
   );
 };
