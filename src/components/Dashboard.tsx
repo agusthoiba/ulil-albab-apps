@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {ScrollView, Text, View, Image, TouchableOpacity, ActivityIndicator} from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { logger } from "react-native-logs";
 
+import { getSurahAsync } from '../reducer/surahSlice';
+import { getAllAyahAsync } from '../reducer/ayahAllSlice';
 import Styles from '../Style';
 import { HomeScreenProps } from '../navigation/type';
-
 import { logger } from "react-native-logs";
 const log = logger.createLogger();
 
@@ -14,10 +17,20 @@ const features = [
   { id: 4, title: 'Sains Quran', icon: '🕌', route: 'QuranList' }
 ]
 
-/*const SyncSurahData = () => {
-  let { error, isFetching  } = useGetSurahQuery();
+const SyncSurahData = () => {
+  const items = useSelector((state) => state.surah.data);
+  const loading = useSelector((state) => state.surah.loading);
+  const error = useSelector((state) => state.surah.error);
+  
+  const dispatch = useDispatch();
+  useEffect(() => {
+      // if have been not persist use dispatch
+      if (items.length === 0) {
+        dispatch(getSurahAsync());
+      }
+    }, [dispatch]);
 
-  if (isFetching) {
+  if (loading) {
     return <ActivityIndicator size="large" style={Styles.loader} />;
   }
 
@@ -28,9 +41,20 @@ const features = [
 }
 
 const SyncAyahData = () => {
-  let { error, isFetching  } = useGetAyahQuery();
+  const items = useSelector((state) => state.ayahAll.data);
+  const loading = useSelector((state) => state.ayahAll.loading);
+  const error = useSelector((state) => state.ayahAll.error);
+  
+  const dispatch = useDispatch();
+  useEffect(() => {
+      // if have been not persist use dispatch
+      if (items.length === 0) {
+        dispatch(getAllAyahAsync());
+      }
+    }, [dispatch]);
 
-  if (isFetching) {
+
+  if (loading) {
     return <ActivityIndicator size="large" style={Styles.loader} />;
   }
 
@@ -38,14 +62,14 @@ const SyncAyahData = () => {
     log.error("error", error)
     return <View><Text>An error occured while load ayat</Text></View>
   }
-}*/
+}
 
 const Dashboard = ({route, navigation}: HomeScreenProps) => {
   log.info('baseUrl: ', process.env.EXPO_PUBLIC_API_URL)
   return (
     <View style={Styles.container}>
-      {/*<SyncSurahData />*/}
-      {/*<SyncAyahData />*/}
+      <SyncSurahData />
+      <SyncAyahData />
 
       <ScrollView>
         <View style={Styles.header}>

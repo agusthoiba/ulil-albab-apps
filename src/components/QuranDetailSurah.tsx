@@ -1,16 +1,15 @@
 import React, { useEffect, useCallback, useMemo } from 'react';
-import { Text, View, SafeAreaView, Platform, useWindowDimensions, FlatList, ActivityIndicator } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { Text, View, SafeAreaView, Platform, useWindowDimensions } from 'react-native';
 import { FlashList } from "@shopify/flash-list";
-
-
 import { logger } from "react-native-logs";
-const log = logger.createLogger();
+
 
 import Styles from '../Style';
 import {  getAllAyahAsync } from '../reducer/ayahAllSlice';
 import {  getAyahAsync } from '../reducer/ayahSlice';
 import { Ayah, SurahResp } from '../models/Quran';
+
+const log = logger.createLogger();
 
 const Bismi = () => {
   return (
@@ -54,18 +53,6 @@ const ListItem = React.memo(({ item, index, width}: {
 
 const QuranDetailSurah = ({ surah, ayahs }: {surah: SurahResp, ayahs: Ayah[]}) => {
   const { width } = useWindowDimensions();
-  /*const dispatch = useDispatch();
-  // ayah all
-  const ayahs = useSelector((state) => state.ayahAll.data);
-  const loading = useSelector((state) => state.ayahAll.loading);
-  const error = useSelector((state) => state.ayahAll.error);
-    
-  if (ayahs.length === 0) {
-    useEffect(() => {
-      dispatch(getAllAyahAsync());
-    }, [dispatch]);
-  } */
-
 
     // Generate items only once and memoize the result
   const items = useMemo(() => ayahs, []);

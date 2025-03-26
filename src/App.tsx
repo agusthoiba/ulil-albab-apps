@@ -2,19 +2,21 @@ import { useEffect } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import { Provider } from 'react-redux'
 import { useFonts } from 'expo-font'; 
-
+import { logger } from "react-native-logs";
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import Navigation from './navigation/index';
 import store from '../src/reducer/store';
+
+const log = logger.createLogger();
 
 const persistor = persistStore(store);
 
 persistor.subscribe(() => {
   const { bootstrapped } = persistor.getState()
   if (bootstrapped) {
-    console.log('Rehydration complete')
-    console.log('Current state:', store.getState())
+    log.info('Rehydration complete')
+    // log.info('Current state:', store.getState())
   }
 })
 // <LogContext.Provider value={log}>
@@ -37,7 +39,6 @@ export default function App() {
   if (!fontsLoaded && !error) {
     return null;
   }
-
 
   //persistor.purge(); // optional: clear storage if needed
   //persistor.flush(); // optional: flush storage to make sure state is persisted immediately

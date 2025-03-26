@@ -1,14 +1,13 @@
-import React, { Component, useCallback, useEffect, useState, createContext, useContext } from 'react';
-import { Alert, Text, View, Image, FlatList, Button } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-
+import React from 'react';
+import { Text, View, Platform } from 'react-native';
+import { useSelector } from 'react-redux';
+import { FlashList } from "@shopify/flash-list";
 import { logger } from "react-native-logs";
-const log = logger.createLogger();
 
+import { SurahResp, Juz } from '../models/Quran';
 import Styles from '../Style';
-import { getAllAyahAsync } from '../reducer/ayahAllSlice';
-import { getSurahAsync } from '../reducer/surahSlice';
 
+const log = logger.createLogger();
 
 const Bismi = () => {
   return (
@@ -18,7 +17,15 @@ const Bismi = () => {
   )
 }
 
-const SurahInfoDetailnBismi = ({ surah }) => {
+type SurahInfoProps = {
+  surah: SurahResp
+}
+
+type DetailJuzProps = {
+  juz: Juz
+}
+
+const SurahInfoDetailnBismi = ({ surah }: SurahInfoProps) => {
   return (
     <View>
       <View style={Styles.surahInfoDetail}>
@@ -31,35 +38,19 @@ const SurahInfoDetailnBismi = ({ surah }) => {
   )
 }
 
-const QuranDetailJuz = ({ juz }) => {
+const QuranDetailJuz = ({ juz }: DetailJuzProps) => {
   const ayahs = useSelector((state) => state.ayahAll.data);
   const error = useSelector((state) => state.ayahAll.error);
-
-  if (ayahs.length === 0) {
-    const dispatch = useDispatch();
-    useEffect(() => {
-      dispatch(getAllAyahAsync());
-    }, [dispatch]);
-  }
  
   const surahs = useSelector((state) => state.surah.data);
   const errorSurah = useSelector((state) => state.surah.error);
-
-  if (surahs.length === 0) {
-    const dispatch = useDispatch();
-    useEffect(() => {
-      dispatch(getSurahAsync());
-    }, [dispatch]);
-  }
 
   const items = ayahs.filter((a) => {
     return a.juzId.Int64 == juz.id
   })
 
-
-
   if (error || errorSurah) {
-    return <View><Text>An error occured</Text></View>
+    return <View><Text>An error occured load surah and ayah</Text></View>
   }
 
   const keyExtractor = item => String(item.id)
@@ -87,11 +78,16 @@ const QuranDetailJuz = ({ juz }) => {
   return (
     <View style={Styles.content}>
 
-      <FlatList
+      <FlashList
         data={items}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
-        
+        removeClippedSubviews={Platform.OS !== 'web'}
+        estimatedItemSize={100}
+        showsVerticalScrollIndicator={false}
+        initialNumToRender={8}
+        maxToRenderPerBatch={5}
+        windowSize={3}
       />
 
     </View>

@@ -20,41 +20,12 @@ export const QuranDetailTop = (props: QuranDetailSurahScreenProps) => {
   const loading = useSelector((state) => state.surah.loading);
   const error = useSelector((state) => state.surah.error);
 
-  if (surahs.length === 0) {
-    useEffect(() => {
-      dispatch(getSurahAsync());
-    }, [dispatch]);
-  }
-
-    // ayah all
+  // ayah all
   const ayahs = useSelector((state) => state.ayahAll.data);
   const loadingAyah = useSelector((state) => state.ayahAll.loading);
   const errorAyah = useSelector((state) => state.ayahAll.error);
 
-  if (ayahs?.length === 0) {
-    useEffect(() => {
-      dispatch(getAllAyahAsync());
-    }, [dispatch]);
-  }
-
   const renderTabs = useCallback(() => {
-    /*if (loading || loadingAyah) {
-      return (
-        <View style={Styles.loadingContainer}>
-          <ActivityIndicator size="large" color="#009688" />
-        </View>
-      );
-    }*/
-  
-    if (error || errorAyah) {
-      log.error(error || errorAyah);
-      return (
-        <View style={Styles.errorContainer}>
-          <Text style={Styles.errorText}></Text>
-        </View>
-      );
-    }
-
     let surahReverse = []
     let start = surahs.length - 1;
     for (let i = start; i > -1; i--) {
@@ -89,8 +60,6 @@ export const QuranDetailTop = (props: QuranDetailSurahScreenProps) => {
       </QuranDetailTab.Navigator>
     )
   }, [surahs, loading, error])
-
-  
 
   return (
     <View style={Styles.container}>
