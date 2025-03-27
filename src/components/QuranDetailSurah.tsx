@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback, useMemo } from 'react';
 import { Text, View, SafeAreaView, Platform, useWindowDimensions } from 'react-native';
-import { FlashList } from "@shopify/flash-list";
 import { logger } from "react-native-logs";
 
 
@@ -8,6 +7,7 @@ import Styles from '../Style';
 import {  getAllAyahAsync } from '../reducer/ayahAllSlice';
 import {  getAyahAsync } from '../reducer/ayahSlice';
 import { Ayah, SurahResp } from '../models/Quran';
+import { FlatList } from 'react-native-gesture-handler';
 
 const log = logger.createLogger();
 
@@ -71,17 +71,15 @@ const QuranDetailSurah = ({ surah, ayahs }: {surah: SurahResp, ayahs: Ayah[]}) =
 
       { [1,9].includes(surah.number) ? null : <Bismi /> }
 
-      <FlashList
+      <FlatList
         data={items}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         removeClippedSubviews={Platform.OS !== 'web'} 
-        estimatedItemSize={100}
         showsVerticalScrollIndicator={false}
-        initialNumToRender={8}
-        maxToRenderPerBatch={5}
-        windowSize={3}
-        getItemType={getItemType}
+        //initialNumToRender={8}
+        //maxToRenderPerBatch={5}
+        //windowSize={3}
       />
 
     </SafeAreaView>

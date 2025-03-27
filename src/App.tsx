@@ -1,3 +1,5 @@
+import '../gesture-handler';
+
 import { useEffect } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import { Provider } from 'react-redux'
