@@ -5,10 +5,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faHome } from '@fortawesome/free-solid-svg-icons/faHome';
-import { faBookReader } from '@fortawesome/free-solid-svg-icons/faBookReader';
-import { faPray } from '@fortawesome/free-solid-svg-icons/faPray';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons/faUserCircle';
 import {  Home, Book, FileText, Calendar, Settings } from 'lucide-react'
 
 import { RootStackParamList, BottomTabParamList, QuranTabParamList, QuranJuzTabParamList } from './type'
@@ -41,10 +37,11 @@ const navItems = [
 const HomeComp = () => {
   return (
     <BottomTab.Navigator>
-      <BottomTab.Screen name="Home" component={Dashboard}  options={{ 
+      <BottomTab.Screen name="Beranda" component={Dashboard}  options={{ 
         title: 'Home',
+        tabBarLabel: 'Beranda',
         tabBarIcon: ({ color, size }) => (
-          <FontAwesomeIcon icon={faHome} color={color} size={size} />
+          <FontAwesomeIcon icon="home" color={color} size={size} />
         ),
         tabBarItemStyle: Styles.navItem,
         tabBarActiveTintColor: '#1fb89d',
@@ -52,28 +49,30 @@ const HomeComp = () => {
       }} />
       <BottomTab.Screen name="Quran" component={QuranList}  options={{ 
         title: 'Al-Quran',
+        tabBarLabel: 'Al-Quran',
         tabBarIcon: ({ color, size }) => (
-          <FontAwesomeIcon icon={faBookReader} color={color} size={size} />
+          <FontAwesomeIcon icon="book-reader" color={color} size={size} />
         ), 
         tabBarActiveTintColor: '#1fb89d',
         headerStyle: {
-          backgroundColor: '#00A884',
-          padding: 20
+          backgroundColor: '#00A884'
         }
       }} />
 
       <BottomTab.Screen name="Tafsir" component={QuranList}  options={{ 
         title: 'Tafsir',
+        tabBarLabel: 'Tafsir',
         tabBarIcon: ({ color, size }) => (
-          <FontAwesomeIcon icon={faPray} color={color} size={size} />
+          <FontAwesomeIcon icon="pray" color={color} size={size} />
         ), 
         tabBarActiveTintColor: '#1fb89d' 
       }} />
 
       <BottomTab.Screen name="Settings" component={Setting}  options={{ 
         title: 'Settings',
+        tabBarLabel: 'Setting',
         tabBarIcon: ({ color, size }) => (
-          <FontAwesomeIcon icon={faUserCircle} color={color} size={size} />
+          <FontAwesomeIcon icon="user-circle" color={color} size={size} />
         ), 
         tabBarActiveTintColor: '#1fb89d' 
       }} />

@@ -7,12 +7,13 @@ const StyleObj = {
     backgroundColor: '#fff',
     fontFamily: 'Roboto-Regular',
   },
+  homeHeader: {
+    backgroundColor: '#00A884',
+    alignItems: 'center',
+    paddingBottom: 20,
+  },
   header: {
     backgroundColor: '#00A884',
-    //padding: 20,
-    // alignItems: 'center',
-    // borderBottomLeftRadius: 30,
-    // borderBottomRightRadius: 30,
   },
   headerTitle: {
     fontSize: 18,

@@ -5,6 +5,15 @@ import { useFonts } from 'expo-font';
 import { logger } from "react-native-logs";
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faHome } from '@fortawesome/free-solid-svg-icons/faHome';
+import { faBookReader } from '@fortawesome/free-solid-svg-icons/faBookReader';
+import { faPray } from '@fortawesome/free-solid-svg-icons/faPray';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons/faUserCircle';
+
+library.add(faHome, faBookReader, faPray, faUserCircle)
+
 import Navigation from './navigation/index';
 import store from '../src/reducer/store';
 

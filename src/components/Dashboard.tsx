@@ -7,7 +7,7 @@ import { getSurahAsync } from '../reducer/surahSlice';
 import { getAllAyahAsync } from '../reducer/ayahAllSlice';
 import Styles from '../Style';
 import { HomeScreenProps } from '../navigation/type';
-import { logger } from "react-native-logs";
+
 const log = logger.createLogger();
 
 const features = [
@@ -72,7 +72,7 @@ const Dashboard = ({route, navigation}: HomeScreenProps) => {
       <SyncAyahData />
 
       <ScrollView>
-        <View style={Styles.header}>
+        <View style={Styles.homeHeader}>
             <Image 
               source={require('../../assets/logo_ulil_albab-photoroom-80.png')}
               style={Styles.logo} 
