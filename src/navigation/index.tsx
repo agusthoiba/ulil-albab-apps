@@ -17,7 +17,7 @@ import Styles from '../Style';
 // import { QuranTabDetail } from './QuranDetailNav'
 
 import { QuranDetailTop } from '../components/QuranDetailTop'
-import { QuranTabJuzDetail } from './QuranDetailJuzNav'
+import { QuranTabJuzDetail } from '../components/QuranDetailJuzNav'
 
 const RootStack = createStackNavigator<RootStackParamList>();
 const QuranTab = createMaterialTopTabNavigator<QuranTabParamList>();

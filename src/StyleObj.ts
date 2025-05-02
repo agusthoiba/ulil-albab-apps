@@ -309,18 +309,30 @@ const StyleObj = {
   },
   tabLabel: {
     fontSize: 12,
+    color: '#8D8D8D'
   },
   tabItem: {
-    padding: 0,
-    width: 110,
-    height: 40,
     flex:1,
   },
+  tabItemInside: {
+    alignItems: 'center',
+    paddingTop: 5,
+    paddingBottom: 10,
+  },
   tabBar: {
+    marginTop: 10,
     padding: 0,
   },
   tabIndicator: {
-    backgroundColor: '#1fb89d',
+    backgroundColor: '#1fb89d'
+  },
+  tabActiveIndicator: {
+    borderBottomWidth: 1.5,
+    borderBottomColor: '#1fb89d',
+    
+  },
+  tabLabelActiveIndicator: {
+    color: '#1fb89d'
   },
   indicator: {
     backgroundColor: '#1fb89d',
