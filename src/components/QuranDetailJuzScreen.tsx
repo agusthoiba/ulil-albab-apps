@@ -10,7 +10,6 @@ interface JuzScreenProps {
 }
 
 export const JuzScreen: React.FC<JuzScreenProps> = ({ juz }) => {
- 
   return (
     <View style={Styles.container}>
       <QuranDetailJuz juz={juz}/>

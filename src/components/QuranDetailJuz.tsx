@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Platform } from 'react-native';
+import { Text, View, Platform, SafeAreaView } from 'react-native';
 import { useSelector } from 'react-redux';
 import { FlashList } from "@shopify/flash-list";
 import { logger } from "react-native-logs";
@@ -47,7 +47,7 @@ const QuranDetailJuz = ({ juz }: DetailJuzProps) => {
 
   const items = ayahs.filter((a) => {
     return a.juzId.Int64 == juz.id
-  })
+  });
 
   if (error || errorSurah) {
     return <View><Text>An error occured load surah and ayah</Text></View>
@@ -74,23 +74,21 @@ const QuranDetailJuz = ({ juz }: DetailJuzProps) => {
   const handleFindSurah = (item) => {
     return surahs.find((sur) => sur.number == item.suraId);
   }
-
   return (
-    <View style={Styles.content}>
-
-      <FlashList
+    <SafeAreaView style={Styles.content}>
+      {<FlashList
         data={items}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         removeClippedSubviews={Platform.OS !== 'web'}
         estimatedItemSize={100}
         showsVerticalScrollIndicator={false}
-        initialNumToRender={8}
-        maxToRenderPerBatch={5}
-        windowSize={3}
-      />
+        //initialNumToRender={8}
+        //maxToRenderPerBatch={5}
+        //windowSize={3}
+      />}
 
-    </View>
+    </SafeAreaView>
   )
 }
 
