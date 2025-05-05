@@ -1,7 +1,5 @@
-import React, { useEffect, useCallback, useMemo } from 'react';
-import { Text, View, SafeAreaView, Platform, useWindowDimensions } from 'react-native';
-import { logger } from "react-native-logs";
-
+import React, { useCallback} from 'react';
+import { Text, View, SafeAreaView, useWindowDimensions } from 'react-native';
 
 import Styles from '../Style';
 import { Ayah, SurahResp } from '../models/Quran';
@@ -31,7 +29,6 @@ const getItemLayout = (data, index) => {
 };
 
 const QuranDetailSurah = ({ surah, ayahs }: {surah: SurahResp, ayahs: Ayah[]}) => {
-  const { width } = useWindowDimensions();
 
   const renderItem = ({item, index}: ItemProps) => (
     <View style={Styles.verse}>

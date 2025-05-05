@@ -101,11 +101,11 @@ const Dashboard = ({route, navigation}: HomeScreenProps) => {
           ))}
         </View>
 
-          <View style={Styles.bannerContainer}>
+          {/*<View style={Styles.bannerContainer}>
             <Image 
               source={require('../../assets/banner.png')} 
             />
-          </View>
+          </View>*/}
       </ScrollView>
     </View>
   );

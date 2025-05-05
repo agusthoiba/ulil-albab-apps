@@ -1,6 +1,3 @@
-import { text } from "@fortawesome/fontawesome-svg-core";
-import { height } from "@fortawesome/free-solid-svg-icons/faHome";
-
 const StyleObj = {
   container: {
     flex: 1,
@@ -71,7 +68,7 @@ const StyleObj = {
   },
   date: {
     color: 'grey',
-    fontSize: 14,
+    fontSize: 15,
     textAlign: 'center',
     fontFamily: 'Roboto-Regular',
   },
@@ -259,8 +256,9 @@ const StyleObj = {
     fontFamily: 'UthmanicArab-Regular',
   },
   arabicTextCaption: {
-    fontSize: 22,
+    fontSize: 25,
     textAlign: 'center',
+    marginTop: 15,
     marginBottom: 8,
     lineHeight: 30,
     fontFamily: 'UthmanicArab-Regular',

@@ -59,14 +59,14 @@ const HomeComp = () => {
         }
       }} />
 
-      <BottomTab.Screen name="Tafsir" component={QuranList}  options={{ 
+      {/*<BottomTab.Screen name="Tafsir" component={QuranList}  options={{ 
         title: 'Tafsir',
         tabBarLabel: 'Tafsir',
         tabBarIcon: ({ color, size }) => (
           <FontAwesomeIcon icon="pray" color={color} size={size} />
         ), 
         tabBarActiveTintColor: '#1fb89d' 
-      }} />
+      }} /> */}
 
       <BottomTab.Screen name="Settings" component={Setting}  options={{ 
         title: 'Settings',
