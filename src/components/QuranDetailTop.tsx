@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useCallback, useEffect, useState, useRef } from 'react';
+import { View, Dimensions, FlatList, TouchableOpacity, Text } from 'react-native';
+import { SurahResp } from '../models/Quran';
+
+import { useSelector } from 'react-redux';
 
 import { logger } from "react-native-logs";
 const log = logger.createLogger();
@@ -9,13 +10,33 @@ const log = logger.createLogger();
 import { QuranDetailSurahScreenProps } from '../navigation/type';
 import Styles from '../Style';
 import { SurahScreen } from '../components/QuranDetailScreen';
-import { getSurahAsync } from '../reducer/surahSlice';
-import { getAllAyahAsync } from '../reducer/ayahAllSlice';
 
-const QuranDetailTab = createMaterialTopTabNavigator();
+type ItemProps = {
+  item: SurahResp,
+  index: number
+}
+
+const { width } = Dimensions.get('window');
+const ITEM_WIDTH = width / 3;
+
+
+const getNavItemLayout = (data, index) => {
+  const result = { 
+    length: ITEM_WIDTH,
+    offset: ITEM_WIDTH * index,
+    index 
+  }
+
+  return result
+};
 
 export const QuranDetailTop = (props: QuranDetailSurahScreenProps) => {
-  const dispatch = useDispatch();
+  const flatListRef = useRef(null);
+  const { navigation } = props;
+  let surahId = Number(props.route.params.surahId);
+  const [currentIndex, setCurrentIndex] = useState(surahId - 1);
+  log.info("currentIndex", currentIndex)
+
   const surahs = useSelector((state) => state.surah.data);
   const loading = useSelector((state) => state.surah.loading);
   const error = useSelector((state) => state.surah.error);
@@ -25,45 +46,86 @@ export const QuranDetailTop = (props: QuranDetailSurahScreenProps) => {
   const loadingAyah = useSelector((state) => state.ayahAll.loading);
   const errorAyah = useSelector((state) => state.ayahAll.error);
 
-  const renderTabs = useCallback(() => {
-    let surahReverse = []
-    let start = surahs.length - 1;
-    for (let i = start; i > -1; i--) {
-      surahReverse.push(surahs[i]);
+  const surah: SurahResp = surahs.find((s) => s.number === surahId);
+  console.log("surah: ", surah)
+
+  const scrollToIndex = (index: number) => {
+    if (flatListRef.current) {
+      flatListRef.current.scrollToIndex({
+        index,
+        animated: true,
+        viewPosition: 0.5, // 0 is at the top, 0.5 is centered, 1 is at the bottom
+      })
+      setCurrentIndex(index);
     }
+  }
 
+  const renderItem = ({item, index}: ItemProps) => {
+    if (currentIndex == item.number - 1) {
+      console.log('item.number: ', item.number, item.name, currentIndex);
+    }
     return (
-      <QuranDetailTab.Navigator
-        initialRouteName={`Surah${props.route.params.surahId}`}
-        screenOptions={({ route }) => ({
-          tabBarScrollEnabled: true,
-          tabBarItemStyle: Styles.tabItem,
-          tabBarStyle: Styles.tabBar,
-          tabBarIndicatorStyle: Styles.tabIndicator,
-          tabBarLabelStyle: Styles.tabLabel,
-          tabBarActiveTintColor: '#1fb89d',
-          tabBarInactiveTintColor: '#8D8D8D',
-        })}
-        >
-
-        {surahReverse.map((surah) => (
-          <QuranDetailTab.Screen
-            key={surah.number}
-            name={`Surah${surah.number}`}
-            children={() => <SurahScreen surah={surah}  ayahs={ayahs} />}
-            options={{
-              tabBarLabel: surah.name
-            }}
-          />
-        ))}
-
-      </QuranDetailTab.Navigator>
+      <TouchableOpacity 
+          style={[
+            Styles.tabItem, 
+            { width: ITEM_WIDTH },
+            currentIndex == item.number - 1 ? Styles.tabActiveIndicator : null,
+          ]}
+          onPress={() => {
+            scrollToIndex(index);
+            navigation.navigate('QuranDetail', {
+              surahId: String(item.number),
+              surahName: item.name
+            });
+          }}
+          
+          >
+          <View style={Styles.tabItemInside}>
+            <Text style={[
+                Styles.tabLabel, 
+                currentIndex == item.number - 1 ? Styles.tabLabelActiveIndicator : null
+              ]}>
+              {item.name}
+            </Text>
+          </View>
+      </TouchableOpacity>
     )
-  }, [surahs, loading, error])
+  }
+
+  const keyExtractor = useCallback((item: SurahResp) => String(item.number), []);
+
+    // Attempt to scroll when component is ready
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // scrollToIndex(currentIndex);
+      flatListRef.current?.scrollToIndex({ 
+        index: currentIndex, 
+        animated: false,
+        viewPosition: 0.5,
+        viewOffset: 0
+      });
+    }, 100); // delay to ensure layout is done
+    return () => clearTimeout(timer); // Cleanup timer
+  }, [currentIndex]);
 
   return (
     <View style={Styles.container}>
-      {renderTabs()}
+      <View style={Styles.tabBar}>
+        <FlatList
+          ref={flatListRef}
+          data={surahs}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+          getItemLayout={getNavItemLayout}
+          showsHorizontalScrollIndicator={false}
+          //initialScrollIndex={currentIndex}
+          inverted={true}
+          horizontal={true}
+          snapToAlignment="center"
+          decelerationRate="fast"
+        />
+      </View>
+      <SurahScreen surah={surah} ayahs={ayahs} />
     </View>
-  );
+  )
 }

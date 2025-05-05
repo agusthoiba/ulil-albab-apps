@@ -7,8 +7,6 @@ import { logger } from "react-native-logs";
 import { SurahResp, Juz } from '../models/Quran';
 import Styles from '../Style';
 
-const log = logger.createLogger();
-
 const Bismi = () => {
   return (
     <View style={Styles.bismillah}>
@@ -54,6 +52,7 @@ const QuranDetailJuz = ({ juz }: DetailJuzProps) => {
   }
 
   const keyExtractor = item => String(item.id)
+
   const renderItem =  ({ item, index }) =>
     <View>
       <View>
@@ -76,7 +75,7 @@ const QuranDetailJuz = ({ juz }: DetailJuzProps) => {
   }
   return (
     <SafeAreaView style={Styles.content}>
-      {<FlashList
+      <FlashList
         data={items}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
@@ -86,7 +85,7 @@ const QuranDetailJuz = ({ juz }: DetailJuzProps) => {
         //initialNumToRender={8}
         //maxToRenderPerBatch={5}
         //windowSize={3}
-      />}
+      />
 
     </SafeAreaView>
   )

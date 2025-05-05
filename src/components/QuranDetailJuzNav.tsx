@@ -74,27 +74,23 @@ export const QuranTabJuzDetail = (props: QuranDetailJuzScreenProps) => {
 
   // Attempt to scroll when component is ready
   useEffect(() => {
-    setTimeout(() => {
-      if (currentIndex > 0 && currentIndex < 29) {
-        setCurrentPosition(0.5);
-      } else if (currentIndex == 0) {
-        setCurrentPosition(0);
-      }
-  
+    const timer = setTimeout(() => {
       flatListRef.current?.scrollToIndex({ 
         index: currentIndex, 
         animated: false,
-        viewPosition: currentPosition, // This uses the old value of currentPosition.
+        viewPosition: 0.5,
+        viewOffset: 0
       });
 
-    }, 0); // delay to ensure layout is done
+    }, 100); // delay to ensure layout is done
 
+    return () => clearTimeout(timer); // Cleanup timer
   }, []);
 
   return (
     <View style={Styles.container}>
       <View style={Styles.tabBar} >
-          <FlatList
+        <FlatList
             ref={flatListRef}
             data={DATA_JUZ}
             getItemLayout={getNavItemLayout}
@@ -108,7 +104,7 @@ export const QuranTabJuzDetail = (props: QuranDetailJuzScreenProps) => {
             decelerationRate="fast"
               />
       </View>
-        <JuzScreen juz={juzDetail}></JuzScreen>
+      <JuzScreen juz={juzDetail}></JuzScreen>
     </View> 
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text } from 'react-native';
 
-import { SurahResp, Juz, Ayah } from '../models/Quran';
+import { SurahResp, Ayah } from '../models/Quran';
 import  QuranDetailSurah from './QuranDetailSurah';
 import Styles from '../Style';
 
@@ -9,8 +9,6 @@ interface SurahScreenProps {
   surah: SurahResp;
   ayahs: Ayah[]
 }
-
-
 
 export const SurahScreen: React.FC<SurahScreenProps> = ({ surah, ayahs }) => {
   const ayahsFiltering: Ayah[] = ayahs.filter((a) => {

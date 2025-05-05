@@ -4,12 +4,8 @@ import { logger } from "react-native-logs";
 
 
 import Styles from '../Style';
-import {  getAllAyahAsync } from '../reducer/ayahAllSlice';
-import {  getAyahAsync } from '../reducer/ayahSlice';
 import { Ayah, SurahResp } from '../models/Quran';
 import { FlatList } from 'react-native-gesture-handler';
-
-const log = logger.createLogger();
 
 const Bismi = () => {
   return (
@@ -34,13 +30,11 @@ const getItemLayout = (data, index) => {
   }
 };
 
-// Memoized Item component
-const ListItem = React.memo(({ item, index, width}: { 
-  item: Ayah; 
-  index: number;
-  width: number; 
-}) => (
-  <View style={Styles.verse}>
+const QuranDetailSurah = ({ surah, ayahs }: {surah: SurahResp, ayahs: Ayah[]}) => {
+  const { width } = useWindowDimensions();
+
+  const renderItem = ({item, index}: ItemProps) => (
+    <View style={Styles.verse}>
     <Text style={Styles.arabicText}>{item.ayahText} 
       <Text style={Styles.arabicNumberIndex} >{(index + 1).toLocaleString("ar-EG")}</Text> 
     </Text>
@@ -48,38 +42,23 @@ const ListItem = React.memo(({ item, index, width}: {
     <Text style={Styles.transliteration}>{item.ReadText}</Text>
     <Text style={Styles.translation}>{item.indoText}</Text>
   </View>
-));
-
-
-const QuranDetailSurah = ({ surah, ayahs }: {surah: SurahResp, ayahs: Ayah[]}) => {
-  const { width } = useWindowDimensions();
-
-    // Generate items only once and memoize the result
-  const items = useMemo(() => ayahs, []);
-
-  const renderItem = useCallback(({item, index}: ItemProps) => (
-    <ListItem item={item} index={index} width={width} />
-  ), []);
+  );
 
   const keyExtractor = useCallback((item: Ayah) => String(item.id), []);
 
-  // Memoize the getItemType function for better recycling
-  const getItemType = useCallback(() => 'row', []);
-  
   return (
     <SafeAreaView style={Styles.content}>
 
       { [1,9].includes(surah.number) ? null : <Bismi /> }
 
       <FlatList
-        data={items}
+        data={ayahs}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
-        removeClippedSubviews={Platform.OS !== 'web'} 
         showsVerticalScrollIndicator={false}
-        //initialNumToRender={8}
-        //maxToRenderPerBatch={5}
-        //windowSize={3}
+        initialNumToRender={8}
+        maxToRenderPerBatch={10}
+        windowSize={5}
       />
 
     </SafeAreaView>
