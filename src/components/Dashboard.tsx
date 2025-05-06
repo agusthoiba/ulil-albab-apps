@@ -65,7 +65,6 @@ const SyncAyahData = () => {
 }
 
 const Dashboard = ({route, navigation}: HomeScreenProps) => {
-  log.info('baseUrl: ', process.env.EXPO_PUBLIC_API_URL)
   return (
     <View style={Styles.container}>
       <SyncSurahData />

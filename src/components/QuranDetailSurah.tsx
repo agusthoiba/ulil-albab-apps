@@ -5,7 +5,11 @@ import Styles from '../Style';
 import { Ayah, SurahResp } from '../models/Quran';
 import { FlatList } from 'react-native-gesture-handler';
 
-const Bismi = () => {
+const Bismi = ({surahId}) => {
+  if (surahId == 1 || surahId == 9) {
+    return null;
+  };
+
   return (
     <View style={Styles.bismillah}>
       <Text style={Styles.arabicText}>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</Text>
@@ -32,13 +36,13 @@ const QuranDetailSurah = ({ surah, ayahs }: {surah: SurahResp, ayahs: Ayah[]}) =
 
   const renderItem = ({item, index}: ItemProps) => (
     <View style={Styles.verse}>
-    <Text style={Styles.arabicText}>{item.ayahText} 
-      <Text style={Styles.arabicNumberIndex} >{(index + 1).toLocaleString("ar-EG")}</Text> 
-    </Text>
-            
-    <Text style={Styles.transliteration}>{item.ReadText}</Text>
-    <Text style={Styles.translation}>{item.indoText}</Text>
-  </View>
+      <Text style={Styles.arabicText}>{item.ayahText} 
+        <Text style={Styles.arabicNumberIndex} >{(index + 1).toLocaleString("ar-EG")}</Text> 
+      </Text>
+              
+      <Text style={Styles.transliteration}>{item.ReadText}</Text>
+      <Text style={Styles.translation}>{item.indoText}</Text>
+    </View>
   );
 
   const keyExtractor = useCallback((item: Ayah) => String(item.id), []);
@@ -46,11 +50,12 @@ const QuranDetailSurah = ({ surah, ayahs }: {surah: SurahResp, ayahs: Ayah[]}) =
   return (
     <SafeAreaView style={Styles.content}>
 
-      { [1,9].includes(surah.number) ? null : <Bismi /> }
-
       <FlatList
         data={ayahs}
         renderItem={renderItem}
+        ListHeaderComponent={
+          <Bismi surahId={surah.number} />
+        }
         keyExtractor={keyExtractor}
         showsVerticalScrollIndicator={false}
         initialNumToRender={8}

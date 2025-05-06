@@ -33,15 +33,28 @@ export default function Setting() {
                 }}
                 style={styles.row}>
                 <Text style={styles.rowLabel}>Bahasa</Text>
-
                 <View style={styles.rowSpacer} />
-
                 <Text style={styles.rowValue}>Indonesia</Text>
-
-                <FeatherIcon
+                {/*<FeatherIcon
                   color="#bcbcbc"
                   name="chevron-right"
-                  size={19} />
+                  size={19} />*/}
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.rowWrapper}>
+              <TouchableOpacity
+                onPress={() => {
+                  // handle onPress
+                }}
+                style={styles.row}>
+                <Text style={styles.rowLabel}>Penerjemah</Text>
+                <View style={styles.rowSpacer} />
+                <Text style={styles.rowValue}>Indonesia - Kemenag-RI</Text>
+                {/*<FeatherIcon
+                  color="#bcbcbc"
+                  name="chevron-right"
+                  size={19} />*/}
               </TouchableOpacity>
             </View>
 
@@ -77,9 +90,7 @@ export default function Setting() {
                 }}
                 style={styles.row}>
                 <Text style={styles.rowLabel}>Tentang</Text>
-
                 <View style={styles.rowSpacer} />
-
                 <FeatherIcon
                   color="#bcbcbc"
                   name="chevron-right"
@@ -94,9 +105,7 @@ export default function Setting() {
                 }}
                 style={styles.row}>
                 <Text style={styles.rowLabel}>Kontak</Text>
-
                 <View style={styles.rowSpacer} />
-
                 <FeatherIcon
                   color="#bcbcbc"
                   name="chevron-right"

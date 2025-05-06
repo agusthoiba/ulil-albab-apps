@@ -69,8 +69,8 @@ const HomeComp = () => {
       }} /> */}
 
       <BottomTab.Screen name="Settings" component={Setting}  options={{ 
-        title: 'Settings',
-        tabBarLabel: 'Setting',
+        title: 'Pengaturan',
+        tabBarLabel: 'Pengaturan',
         tabBarIcon: ({ color, size }) => (
           <FontAwesomeIcon icon="user-circle" color={color} size={size} />
         ), 
