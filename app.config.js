@@ -24,8 +24,8 @@ export default {
   },
   "android": {
     "adaptiveIcon": {
-      "foregroundImage": "./assets/adaptive-icon.png",
-      "backgroundColor": "#ffffff"
+      "foregroundImage": "./assets/logo_ulil_albab_sq_bg_half.png",
+      "backgroundColor": "#00A884"
     },
     "package": "com.gust0.ulil_albab",
     "permissions": ["INTERNET"],
@@ -40,14 +40,10 @@ export default {
     }
   },
   "plugins": [
-      [
-        "expo-font",
-        {
+      ["expo-font",{
           "fonts": ["assets/fonts/KFGQPC-Uthmanic-Script-HAFS-Regular.otf", "assets/fonts/Roboto-Regular.ttf", "assets/fonts/Roboto-Medium.ttf", "assets/fonts/Roboto-Bold.ttf"]
-        }
-      ],
-      [
-        "expo-asset"
-      ]
+      }],
+      ["expo-asset"],
+      ["react-native-email-link"]
   ]
 }

@@ -74,7 +74,10 @@ const HomeComp = () => {
         tabBarIcon: ({ color, size }) => (
           <FontAwesomeIcon icon="user-circle" color={color} size={size} />
         ), 
-        tabBarActiveTintColor: '#1fb89d' 
+        tabBarActiveTintColor: '#1fb89d' ,
+        headerStyle: {
+          backgroundColor: '#00A884'
+        }
       }} />
     </BottomTab.Navigator>
   )

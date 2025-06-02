@@ -2,7 +2,6 @@ import React from 'react';
 import { Text, View, Platform, SafeAreaView } from 'react-native';
 import { useSelector } from 'react-redux';
 import { FlashList } from "@shopify/flash-list";
-import { logger } from "react-native-logs";
 
 import { SurahResp, Juz } from '../models/Quran';
 import Styles from '../Style';
@@ -68,7 +67,6 @@ const QuranDetailJuz = ({ juz }: DetailJuzProps) => {
       </View>
 
     </View>
-
 
   const handleFindSurah = (item) => {
     return surahs.find((sur) => sur.number == item.suraId);

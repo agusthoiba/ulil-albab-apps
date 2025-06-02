@@ -7,6 +7,7 @@ import { getSurahAsync } from '../reducer/surahSlice';
 import { getAllAyahAsync } from '../reducer/ayahAllSlice';
 import Styles from '../Style';
 import { HomeScreenProps } from '../navigation/type';
+import { RootState } from '../reducer/store';
 
 const log = logger.createLogger();
 
@@ -18,9 +19,9 @@ const features = [
 ]
 
 const SyncSurahData = () => {
-  const items = useSelector((state) => state.surah.data);
-  const loading = useSelector((state) => state.surah.loading);
-  const error = useSelector((state) => state.surah.error);
+  const items = useSelector((state: RootState) => state.surah.data);
+  const loading = useSelector((state: RootState) => state.surah.loading);
+  const error = useSelector((state: RootState) => state.surah.error);
   
   const dispatch = useDispatch();
   useEffect(() => {
@@ -41,9 +42,9 @@ const SyncSurahData = () => {
 }
 
 const SyncAyahData = () => {
-  const items = useSelector((state) => state.ayahAll.data);
-  const loading = useSelector((state) => state.ayahAll.loading);
-  const error = useSelector((state) => state.ayahAll.error);
+  const items = useSelector((state: RootState) => state.ayahAll.data);
+  const loading = useSelector((state: RootState) => state.ayahAll.loading);
+  const error = useSelector((state: RootState) => state.ayahAll.error);
   
   const dispatch = useDispatch();
   useEffect(() => {
