@@ -15,14 +15,14 @@ import { openInbox, openComposer } from 'react-native-email-link';
 
 import styles from '../Style';
 import SettingInfo from './SettingInfo';
+import SettingPrivacy from './SettingPrivacy';
+
+// Content pages
+type ContentPage = "about" | "privacy";
 
 export default function Setting() {
   const bottomSheetRef = useRef<BottomSheet>(null);
-
-  const [form, setForm] = useState({
-    emailNotifications: true,
-    pushNotifications: false,
-  });
+ const [activeContent, setActiveContent] = useState<ContentPage>("about")
 
    // callbacks
   const handleSheetChanges = useCallback((index: number) => {
@@ -33,8 +33,8 @@ export default function Setting() {
   const snapPoints = ['100%'];
 
   // Callbacks for handling the bottom sheet
-  const handleOpenPress = useCallback(() => {
-    console.log('handleOpenPress --');
+  const handleOpenPress = useCallback((contentPage: ContentPage) => {
+    setActiveContent(contentPage);
     bottomSheetRef.current?.expand()
   }, [])
 
@@ -53,6 +53,30 @@ export default function Setting() {
       body: 'Hello, Saya ingin memberikan feedback tentang aplikasi ini.',
     });
   }, []);
+
+   // Get header title based on active content
+  const getHeaderTitle = () => {
+    switch (activeContent) {
+      case "about":
+        return "Informasi Aplikasi"
+      case "privacy":
+        return "Kebijakan Privasi"
+      default:
+        return "Informasi"
+    }
+  }
+
+  // Render content based on active content type
+  const renderContent = () => {
+    switch (activeContent) {
+      case "about":
+        return <SettingInfo />
+      case "privacy":
+        return <SettingPrivacy />
+      default:
+        return <SettingInfo />
+    }
+  }
 
   return (
     <GestureHandlerRootView style={styles.bottomSheetContainer}>
@@ -100,15 +124,13 @@ export default function Setting() {
                 }}
                 style={styles.row}>
                 <Text style={styles.rowLabel}>Tema</Text>
-
                 <View style={styles.rowSpacer} />
-
                 <Text style={styles.rowValue}>Terang (Light)</Text>
 
-                <FeatherIcon
+                {/*<FeatherIcon
                   color="#bcbcbc"
                   name="chevron-right"
-                  size={19} />
+                  size={19} /> */}
               </TouchableOpacity>
             </View>
           </View>
@@ -120,7 +142,8 @@ export default function Setting() {
           <View style={styles.sectionBody}>
             <View style={[styles.rowWrapper, styles.rowFirst]}>
               <TouchableOpacity
-                onPress={handleOpenPress}
+                onPress={() => handleOpenPress("about")}
+                key={"about"}
                 style={styles.row}>
                 <View style={styles.rowIcon}> 
                   <FeatherIcon
@@ -139,7 +162,8 @@ export default function Setting() {
 
             <View style={styles.rowWrapper}>
               <TouchableOpacity
-                onPress={() => {}}
+                onPress={() => handleOpenPress("privacy")}
+                key={"privacy"}
                 style={styles.row}>
                 <View style={styles.rowIcon}> 
                   <FeatherIcon
@@ -188,7 +212,7 @@ export default function Setting() {
           </View>
         </View>
 
-        <Text style={styles.settingContentFooter}>App Version 0.1 #0001</Text>
+        <Text style={styles.settingContentFooter}>App Version 0.1 #0005</Text>
       
         <BottomSheet
               ref={bottomSheetRef}
@@ -200,7 +224,7 @@ export default function Setting() {
             >
 
           <View style={styles.headlineSection}>
-            <Text style={styles.headlineTitle}>Informasi Aplikasi</Text>
+            <Text style={styles.headlineTitle}>{getHeaderTitle()}</Text>
             <TouchableOpacity style={styles.headlineButtonClose} onPress={handleClosePress}>
                <Text style={styles.headlineButtonCloseText}>✕</Text>
             </TouchableOpacity>
@@ -208,7 +232,7 @@ export default function Setting() {
 
             <BottomSheetScrollView contentContainerStyle={styles.bottomSheetcontentContainer}>
               <View style={styles.bottomSheetBody}>
-                <SettingInfo />
+                {renderContent()}
               </View>
             </BottomSheetScrollView>
               
