@@ -1,16 +1,12 @@
-import { useAssets } from 'expo-asset';
-import React, { useState,  useCallback, useMemo, useRef } from 'react';
+import React, { useState,  useCallback, useRef } from 'react';
 import {
-  StyleSheet,
-  SafeAreaView,
-  ScrollView,
   View,
   Text,
   TouchableOpacity
 } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import FeatherIcon from '@expo/vector-icons/Feather';
-import BottomSheet, { BottomSheetScrollView, BottomSheetView } from '@gorhom/bottom-sheet';
+import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { openInbox, openComposer } from 'react-native-email-link';
 
 import styles from '../Style';
@@ -22,12 +18,12 @@ type ContentPage = "about" | "privacy";
 
 export default function Setting() {
   const bottomSheetRef = useRef<BottomSheet>(null);
- const [activeContent, setActiveContent] = useState<ContentPage>("about")
+  const [activeContent, setActiveContent] = useState<ContentPage>("about")
 
    // callbacks
-  const handleSheetChanges = useCallback((index: number) => {
+  /*const handleSheetChanges = useCallback((index: number) => {
     console.log('handleSheetChanges', index);
-  }, []);
+  }, []);*/
 
     // Snap points for the bottom sheet (percentage of screen height)
   const snapPoints = ['100%'];
@@ -151,7 +147,7 @@ export default function Setting() {
                     name="info"
                     size={19} />
                 </View>
-                <Text style={styles.rowLabel}>Tentang</Text>
+                <Text style={styles.rowLabel}>Informasi</Text>
                 <View style={styles.rowSpacer} />
                 <FeatherIcon
                   color="#bcbcbc"
@@ -216,7 +212,7 @@ export default function Setting() {
       
         <BottomSheet
               ref={bottomSheetRef}
-              onChange={handleSheetChanges}
+              // onChange={handleSheetChanges}
               // enableDynamicSizing={false}
               enablePanDownToClose={true}
               index={-1} // -1 means closed

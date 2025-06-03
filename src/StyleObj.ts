@@ -4,10 +4,15 @@ const StyleObj = {
     backgroundColor: '#fff',
     fontFamily: 'Roboto-Regular',
   },
+  dashboardContainer: {
+    flex: 1,
+    justifyContent: 'space-between',
+    paddingBottom: 20,
+  },
   homeHeader: {
     backgroundColor: '#00A884',
     alignItems: 'center',
-    paddingBottom: 20,
+    paddingBottom: 30,
   },
   header: {
     backgroundColor: '#00A884',
@@ -73,22 +78,24 @@ const StyleObj = {
     fontFamily: 'Roboto-Regular',
   },
   featuresGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+   //flexDirection: 'row',
+    width: '100%',
+    //flexWrap: 'wrap',
     padding: 15,
-    justifyContent: 'space-between',
+    alignItems: 'center',
+    // justifyContent: 'space-between',
   },
   featureItem: {
-    width: '25%',
+    width: '50%',
     alignItems: 'center',
     marginBottom: 20,
   },
   featureIcon: {
-    fontSize: 24,
-    marginBottom: 5,
+    fontSize: 26,
+    marginBottom: 5
   },
   featureTitle: {
-    fontSize: 12,
+    fontSize: 15,
     textAlign: 'center',
     color: '#333',
     fontFamily: 'Roboto-Regular',
@@ -290,6 +297,7 @@ const StyleObj = {
     fontSize: 25,
     textAlign: 'center',
     marginTop: 15,
+    paddingTop: 10,
     marginBottom: 8,
     lineHeight: 30,
     fontFamily: 'UthmanicArab-Regular',
@@ -380,6 +388,7 @@ const StyleObj = {
   /** Section */
   settingSection: {
     paddingVertical: 12,
+    paddingHorizontal: 16,
   },
   settingSectionTitle: {
     margin: 8,

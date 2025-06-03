@@ -9,10 +9,6 @@ import { useSelector } from 'react-redux';
 
 import Styles from '../Style';
 import { QuranListSurahTabProps } from '../navigation/type';
-// import { Surah, SurahResp } from '../models/Quran';
-// import { useGetSurahQuery } from '../services/quranApi';
-// import storage from "@react-native-async-storage/async-storage";
-// import store from '../reducer/store';
 
 const log = logger.createLogger();
 
@@ -22,8 +18,6 @@ const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
   const items = useSelector((state) => state.surah.data);
   const loading = useSelector((state) => state.surah.loading);
   const error = useSelector((state) => state.surah.error);
-
-  console.log("le: ", items[0], loading, error)
 
   const keyExtractor = item => item.number; 
   const renderItem = ({ item }) =>
