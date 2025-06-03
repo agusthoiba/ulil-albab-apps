@@ -39,5 +39,3 @@ DerivedData
 *.ipa
 *.xcuserstate
 ios/Pods/
-
-/android

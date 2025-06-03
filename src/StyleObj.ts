@@ -1,6 +1,3 @@
-import { text } from "@fortawesome/fontawesome-svg-core";
-import { height } from "@fortawesome/free-solid-svg-icons/faHome";
-
 const StyleObj = {
   container: {
     flex: 1,
@@ -71,7 +68,7 @@ const StyleObj = {
   },
   date: {
     color: 'grey',
-    fontSize: 14,
+    fontSize: 15,
     textAlign: 'center',
     fontFamily: 'Roboto-Regular',
   },
@@ -129,13 +126,44 @@ const StyleObj = {
     borderRadius: 10,
   },
   headlineSection: {
-    margin: 15,
+    // flex: 1,
+    // width: '100%',
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    paddingTop: 10,
+    zIndex: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#f0f0f0",
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 50,
+    backgroundColor: "white",
   },
   headlineTitle: {
-    fontSize: 18,
+    flex:1,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#333',
     fontFamily: 'Roboto-Bold',
+    textAlign: "center",
+  },
+  headlineButtonClose:{
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: "#f8f9fa",
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+    right: 20,
+  },
+  headlineButtonCloseText: {
+    fontSize: 16,
+    color: "#6c757d",
+    fontWeight: "500",
   },
   bottomNav: {
     flexDirection: 'row',
@@ -259,8 +287,9 @@ const StyleObj = {
     fontFamily: 'UthmanicArab-Regular',
   },
   arabicTextCaption: {
-    fontSize: 22,
+    fontSize: 25,
     textAlign: 'center',
+    marginTop: 15,
     marginBottom: 8,
     lineHeight: 30,
     fontFamily: 'UthmanicArab-Regular',
@@ -336,8 +365,131 @@ const StyleObj = {
   },
   indicator: {
     backgroundColor: '#1fb89d',
+  },
+   /** Content */
+  settingContent: {
+    paddingHorizontal: 16,
+  },
+  settingContentFooter: {
+    marginTop: 24,
+    fontSize: 13,
+    fontWeight: '500',
+    textAlign: 'center',
+    color: '#a69f9f',
+  },
+  /** Section */
+  settingSection: {
+    paddingVertical: 12,
+  },
+  settingSectionTitle: {
+    margin: 8,
+    marginLeft: 12,
+    fontSize: 13,
+    letterSpacing: 0.33,
+    fontWeight: '500',
+    color: '#a69f9f',
+    textTransform: 'uppercase',
+  },
+  sectionBody: {
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 2,
+  },
+  /** Profile */
+  profile: {
+    padding: 12,
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  profileAvatar: {
+    width: 60,
+    height: 60,
+    borderRadius: 9999,
+    marginRight: 12,
+  },
+  profileBody: {
+    marginRight: 'auto',
+  },
+  profileName: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#292929',
+  },
+  profileHandle: {
+    marginTop: 2,
+    fontSize: 16,
+    fontWeight: '400',
+    color: '#858585',
+  },
+  /** Row */
+  row: {
+    height: 44,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingRight: 12,
+  },
+  rowWrapper: {
+    paddingLeft: 16,
+    backgroundColor: '#fff',
+    borderTopWidth: 1,
+    borderColor: '#f0f0f0',
+  },
+  rowFirst: {
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+  },
+  rowIcon: {
+    paddingRight: 12,
+  },
+  rowLabel: {
+    fontSize: 16,
+    letterSpacing: 0.24,
+    color: '#000',
+  },
+  rowSpacer: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+  },
+  rowValue: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#ababab',
+    marginRight: 4,
+  },
+  rowLast: {
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
+  },
+  rowLabelLogout: {
+    width: '100%',
+    textAlign: 'center',
+    fontWeight: '600',
+    color: '#dc2626',
+  },
+  bottomSheetContainer: {
+    flex: 1,
+    // backgroundColor: 'grey',
+  },
+  bottomSheetcontentContainer: {
+    paddingTop: 60, // Space for absolute header
+    paddingHorizontal: 20,
+    paddingBottom: 20,
+  },
+  bottomSheetBody:{
+    padding: 0,
   }
-
 }
 
 export default StyleObj;

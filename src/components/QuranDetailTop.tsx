@@ -35,7 +35,6 @@ export const QuranDetailTop = (props: QuranDetailSurahScreenProps) => {
   const { navigation } = props;
   let surahId = Number(props.route.params.surahId);
   const [currentIndex, setCurrentIndex] = useState(surahId - 1);
-  log.info("currentIndex", currentIndex)
 
   const surahs = useSelector((state) => state.surah.data);
   const loading = useSelector((state) => state.surah.loading);
