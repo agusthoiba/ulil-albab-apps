@@ -1,12 +1,8 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import { View, Dimensions, FlatList, TouchableOpacity, Text } from 'react-native';
-import { SurahResp } from '../models/Quran';
-
 import { useSelector } from 'react-redux';
 
-import { logger } from "react-native-logs";
-const log = logger.createLogger();
-
+import { SurahResp } from '../models/Quran';
 import { QuranDetailSurahScreenProps } from '../navigation/type';
 import Styles from '../Style';
 import { SurahScreen } from '../components/QuranDetailScreen';
@@ -46,7 +42,6 @@ export const QuranDetailTop = (props: QuranDetailSurahScreenProps) => {
   const errorAyah = useSelector((state) => state.ayahAll.error);
 
   const surah: SurahResp = surahs.find((s) => s.number === surahId);
-  console.log("surah: ", surah)
 
   const scrollToIndex = (index: number) => {
     if (flatListRef.current) {
@@ -60,9 +55,6 @@ export const QuranDetailTop = (props: QuranDetailSurahScreenProps) => {
   }
 
   const renderItem = ({item, index}: ItemProps) => {
-    if (currentIndex == item.number - 1) {
-      console.log('item.number: ', item.number, item.name, currentIndex);
-    }
     return (
       <TouchableOpacity 
           style={[

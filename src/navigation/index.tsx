@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faCog } from '@fortawesome/free-solid-svg-icons'
 import {  Home, Book, FileText, Calendar, Settings } from 'lucide-react'
 
 import { RootStackParamList, BottomTabParamList, QuranTabParamList, QuranJuzTabParamList } from './type'
@@ -59,22 +60,13 @@ const HomeComp = () => {
         }
       }} />
 
-      {/*<BottomTab.Screen name="Tafsir" component={QuranList}  options={{ 
-        title: 'Tafsir',
-        tabBarLabel: 'Tafsir',
-        tabBarIcon: ({ color, size }) => (
-          <FontAwesomeIcon icon="pray" color={color} size={size} />
-        ), 
-        tabBarActiveTintColor: '#1fb89d' 
-      }} /> */}
-
       <BottomTab.Screen name="Settings" component={Setting}  options={{ 
         title: 'Pengaturan',
         tabBarLabel: 'Pengaturan',
         tabBarIcon: ({ color, size }) => (
-          <FontAwesomeIcon icon="user-circle" color={color} size={size} />
+          <FontAwesomeIcon icon={faCog} color={color} size={size} />
         ), 
-        tabBarActiveTintColor: '#1fb89d' ,
+        tabBarActiveTintColor: '#1fb89d',
         headerStyle: {
           backgroundColor: '#00A884'
         }

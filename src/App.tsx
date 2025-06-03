@@ -27,7 +27,6 @@ persistor.subscribe(() => {
   const { bootstrapped } = persistor.getState()
   if (bootstrapped) {
     log.info('Rehydration complete')
-    // log.info('Current state:', store.getState())
   }
 })
 // <LogContext.Provider value={log}>
