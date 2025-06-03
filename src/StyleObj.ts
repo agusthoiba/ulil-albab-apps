@@ -78,21 +78,20 @@ const StyleObj = {
     fontFamily: 'Roboto-Regular',
   },
   featuresGrid: {
-   //flexDirection: 'row',
-    width: '100%',
-    //flexWrap: 'wrap',
-    padding: 15,
-    alignItems: 'center',
-    // justifyContent: 'space-between',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingVertical: 15,
+    justifyContent: 'space-around',
   },
   featureItem: {
     width: '50%',
     alignItems: 'center',
-    marginBottom: 20,
+    paddingBottom: 20,
   },
   featureIcon: {
     fontSize: 26,
-    marginBottom: 5
+    paddingBottom: 5,
+    //marginBottom: 5
   },
   featureTitle: {
     fontSize: 15,

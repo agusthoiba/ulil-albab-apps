@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {Text, View, Image, TouchableOpacity, ActivityIndicator, Alert} from 'react-native';
+import {Text, View, ScrollView, Image, TouchableOpacity, ActivityIndicator, Alert} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { logger } from "react-native-logs";
 
@@ -79,7 +79,7 @@ const Dashboard = ({route, navigation}: HomeScreenProps) => {
       <SyncSurahData />
       <SyncAyahData />
 
-      <View style={Styles.dashboardContainer}>
+      <ScrollView contentContainerStyle={Styles.dashboardContainer}>
         <View style={Styles.homeHeader}>
             <Image 
               source={require('../../assets/logo_ulil_albab-photoroom-80.png')}
@@ -118,7 +118,7 @@ const Dashboard = ({route, navigation}: HomeScreenProps) => {
               source={require('../../assets/banner.png')} 
             />
           </View>*/}
-      </View>
+      </ScrollView>
     </View>
   );
 }
