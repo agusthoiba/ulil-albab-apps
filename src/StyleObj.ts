@@ -216,14 +216,14 @@ const StyleObj = {
     color: '#333',
   },
   arabicName: {
-    fontSize: 24,
+    fontSize: 23,
     color: '#00A884',
     fontFamily: 'UthmanicArab-Regular',
   },
   description: {
     fontSize: 14,
     color: '#666',
-    marginTop: 4,
+    paddingLeft: 4,
   },
   numberCircle: {
     width: 40,
@@ -256,7 +256,7 @@ const StyleObj = {
   surahTitle: {
     fontSize: 24,
     // marginVertical: 8,
-    fontFamily: 'UthmanicArab-Regular',
+    fontFamily: 'AmiriQuran',
   },
   ayahCount: {
     fontSize: 14,
@@ -269,14 +269,14 @@ const StyleObj = {
   },
   bismillah: {
     alignItems: 'center',
-    marginBottom: 5,
+    //paddingVertical: 7,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
   },
   verse: {
-    marginBottom: 10,
-    paddingTop: 10,
-    paddingBottom: 10,
+    //marginBottom: 10,
+    paddingTop: 5,
+    paddingBottom: 5,
     paddingLeft: 16,
     paddingRight: 16,
     borderBottomWidth: 1,
@@ -286,11 +286,11 @@ const StyleObj = {
     flexDirection: 'row',
   },
   arabicText: {
-    fontSize: 24,
+    fontSize: 23,
     textAlign: 'right',
-    marginBottom: 8,
-    lineHeight: 40,
-    fontFamily: 'UthmanicArab-Regular',
+    paddingBottom: 8,
+    //lineHeight: 45,
+    fontFamily: 'AmiriQuran',
   },
   arabicTextCaption: {
     fontSize: 25,
@@ -298,12 +298,14 @@ const StyleObj = {
     marginTop: 15,
     paddingTop: 10,
     marginBottom: 8,
-    lineHeight: 30,
-    fontFamily: 'UthmanicArab-Regular',
+    //lineHeight: 30,
+    fontFamily: 'AmiriQuran',
   },
   arabicNumberIndex: {
     paddingRight: 10,
     color: 'saddlebrown',
+    fontFamily: 'UthmanicArab-Regular',
+    fontSize: 28
   },
   arabicNumberCircle: {
     width: 30,

@@ -37,7 +37,8 @@ export default function App() {
       'Roboto-Regular': require('../assets/fonts/Roboto-Regular.ttf'),
       'Roboto-Medium': require('../assets/fonts/Roboto-Medium.ttf'),
       'Roboto-Bold': require('../assets/fonts/Roboto-Bold.ttf'),
-      'UthmanicArab-Regular': require('../assets/fonts/KFGQPC-Uthmanic-Script-HAFS-Regular.otf')
+      'UthmanicArab-Regular': require('../assets/fonts/KFGQPC-Uthmanic-Script-HAFS-Regular.otf'),
+      "AmiriQuran": require('../assets/fonts/AmiriQuran.ttf'),
   })
 
   useEffect(() => {

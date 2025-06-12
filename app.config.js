@@ -1,5 +1,5 @@
 export default {
-  "name": "Ulil Albab",
+  "name": "Ulil Albab: Quran",
   "slug": "ulil-albab",
   "jsEngine": "hermes",
   "version": "0.0.1",
@@ -41,7 +41,13 @@ export default {
   },
   "plugins": [
       ["expo-font",{
-          "fonts": ["assets/fonts/KFGQPC-Uthmanic-Script-HAFS-Regular.otf", "assets/fonts/Roboto-Regular.ttf", "assets/fonts/Roboto-Medium.ttf", "assets/fonts/Roboto-Bold.ttf"]
+          "fonts": [
+            "assets/fonts/AmiriQuran.ttf",
+            "assets/fonts/KFGQPC-Uthmanic-Script-HAFS-Regular.otf", 
+            "assets/fonts/Roboto-Regular.ttf", 
+            "assets/fonts/Roboto-Medium.ttf", 
+            "assets/fonts/Roboto-Bold.ttf"
+          ]
       }],
       ["expo-asset"],
       ["react-native-email-link"]
