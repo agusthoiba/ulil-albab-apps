@@ -39,6 +39,7 @@ export default function App() {
       'Roboto-Bold': require('../assets/fonts/Roboto-Bold.ttf'),
       'UthmanicArab-Regular': require('../assets/fonts/KFGQPC-Uthmanic-Script-HAFS-Regular.otf'),
       "AmiriQuran": require('../assets/fonts/AmiriQuran.ttf'),
+      "Scheherazade-Reguler": require('../assets/fonts/ScheherazadeRegOT.ttf'),
   })
 
   useEffect(() => {

@@ -4,7 +4,7 @@ export default {
   "jsEngine": "hermes",
   "version": "0.0.1",
   "orientation": "portrait",
-  "icon": "./assets/logo_ulil_albab_sq_bg_half.png",
+  "icon": "./assets/icon.png",
   "userInterfaceStyle": "light",
   "splash": {
     "image": "./assets/logo_ulil_albab-photoroom.png",
@@ -42,6 +42,7 @@ export default {
   "plugins": [
       ["expo-font",{
           "fonts": [
+            "assets/fonts/ScheherazadeRegOT.ttf",
             "assets/fonts/AmiriQuran.ttf",
             "assets/fonts/KFGQPC-Uthmanic-Script-HAFS-Regular.otf", 
             "assets/fonts/Roboto-Regular.ttf", 
