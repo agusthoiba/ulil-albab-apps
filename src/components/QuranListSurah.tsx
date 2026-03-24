@@ -1,33 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
-  Text, View, 
+  Text, View,
   SafeAreaView, TouchableOpacity,
   FlatList
 } from 'react-native';
-import { logger } from "react-native-logs";
 import { useSelector } from 'react-redux';
 
 import Styles from '../Style';
 import { QuranListSurahTabProps } from '../navigation/type';
+import { RootState } from '../reducer/store';
+import { SurahResp } from '../models/Quran';
 
-const log = logger.createLogger();
+const QuranListSurah = ({navigation}: QuranListSurahTabProps) => {
+  const items = useSelector((state: RootState) => state.surah.data);
 
-const QuranListSurah = ({route, navigation}: QuranListSurahTabProps) => {
-  const [selectedId, setSelectedId] = useState<string>();
-  
-  const items = useSelector((state) => state.surah.data);
-  const loading = useSelector((state) => state.surah.loading);
-  const error = useSelector((state) => state.surah.error);
-
-  const keyExtractor = item => item.number; 
-  const renderItem = ({ item }) =>
+  const keyExtractor = (item: SurahResp) => String(item.number);
+  const renderItem = ({ item }: { item: SurahResp }) =>
     <TouchableOpacity onPress={() =>
       navigation.navigate('QuranDetail', {
-        surahId: item.number,
-        surahName: item.name
+        surahId: String(item.number),
+        surahName: item.name,
+        juzId: undefined,
       })
     }
-      key={item.number}
       style={Styles.surahItem}>
 
       <View style={Styles.numberCircle}>

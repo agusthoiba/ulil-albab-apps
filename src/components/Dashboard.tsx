@@ -20,7 +20,8 @@ type Feature = {
 
 const features: Feature[] = [
   { id: 1, title: 'Al-Quran', icon: '📖', route: 'QuranList' },
-  { id: 2, title: 'Bookmark', icon: '📑'},
+  //{ id: 2, title: 'Bookmark', icon: '📑'},
+  { id: 2, title: 'Terakhir Baca', icon: '📑', route: 'LastRead' },
   { id: 3, title: 'Azbabun Nuzul', icon: '📗' },
   //{ id: 2, title: 'Tafsir', icon: '🤲', route: 'QuranList' },
   { id: 4, title: 'Pengaturan', icon: '⚙️', route: 'Settings' }
@@ -82,7 +83,7 @@ const Dashboard = ({route, navigation}: HomeScreenProps) => {
       <ScrollView contentContainerStyle={Styles.dashboardContainer}>
         <View style={Styles.homeHeader}>
             <Image 
-              source={require('../../assets/logo_ulil_albab-photoroom-80.png')}
+              source={require('../../assets/images/logo_ulil_albab-photoroom-80.png')}
               style={Styles.logo} 
             />
             <Text style={Styles.headerTitle}>Ulil Albab</Text>
@@ -92,7 +93,9 @@ const Dashboard = ({route, navigation}: HomeScreenProps) => {
           {/* Features Grid */}
           {features.map((feature) => (
             <TouchableOpacity  onPress={() => {
-              if (feature.route) {
+              if (feature.id === 2) {
+                navigation.navigate('QuranDetail', { surahId: undefined, surahName: undefined, juzId: undefined });
+              } else if (feature.route) {
                 navigation.navigate(feature.route);
               } else {
                 Alert.alert("Fitur belum tersedia", "Fitur ini masih dalam pengembangan, mohon bersabar ya :)");
@@ -115,7 +118,7 @@ const Dashboard = ({route, navigation}: HomeScreenProps) => {
 
           {/*<View style={Styles.bannerContainer}>
             <Image 
-              source={require('../../assets/banner.png')} 
+              source={require('../../assets/images/banner.png')} 
             />
           </View>*/}
       </ScrollView>

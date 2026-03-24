@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { SurahResp, Ayah } from '../models/Quran';
 import  QuranDetailSurah from './QuranDetailSurah';
 import Styles from '../Style';
+//import { API_URL, LAST_READ_KEY } from '../config';
 
 interface SurahScreenProps {
   surah: SurahResp;
-  ayahs: Ayah[]
+  ayahs: Ayah[];
+  scrollToVerseId?: number;
 }
 
-export const SurahScreen: React.FC<SurahScreenProps> = ({ surah, ayahs }) => {
+export const SurahScreen: React.FC<SurahScreenProps> = ({ surah, ayahs, scrollToVerseId }) => {
   const ayahsFiltering: Ayah[] = ayahs.filter((a) => {
     return a.suraId == surah.number
   });
@@ -24,7 +27,7 @@ export const SurahScreen: React.FC<SurahScreenProps> = ({ surah, ayahs }) => {
       </View>
 
 
-      <QuranDetailSurah surah={surah} ayahs={ayahsFiltering}/>
+      <QuranDetailSurah surah={surah} ayahs={ayahsFiltering} scrollToVerseId={scrollToVerseId}/>
     </View>
   );
 };

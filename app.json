@@ -1,0 +1,93 @@
+{
+  "name": "Ulil Albab",
+  "slug": "ulil-albab",
+  "jsEngine": "hermes",
+  "version": "0.0.4",
+  "orientation": "portrait",
+  "icon": "./assets/images/icon.png",
+  "userInterfaceStyle": "light",
+  "splash": {
+    "image": "./assets/images/splash.png",
+    "backgroundColor": "#00A884"
+  },
+  "assetBundlePatterns": [
+    "**/*"
+  ],
+  "platforms": [
+    "ios",
+    "android",
+    "web"
+  ],
+  "ios": {
+    "supportsTablet": true,
+    "bundleIdentifier": "com.gust0.ulil-albab",
+    "infoPlist": {
+      "ITSAppUsesNonExemptEncryption": false
+    }
+  },
+  "android": {
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/images/adaptive-icon.png",
+      "backgroundColor": "#00A884"
+    },
+    "package": "com.gust0.ulil_albab",
+    "permissions": [
+      "INTERNET"
+    ],
+    "usesCleartextTraffic": true
+  },
+  "web": {
+    "favicon": "./assets/images/logo_ulil_albab_sq_bg_half.png"
+  },
+  "extra": {
+    "eas": {
+      "projectId": "e3915484-5ebe-4d61-be6a-a2416f41546d"
+    }
+  },
+  "plugins": [
+    [
+      "expo-font",
+      {
+        "fonts": [
+          "assets/fonts/Naskh.ttf",
+          "assets/fonts/ScheherazadeRegOT.ttf",
+          "assets/fonts/ScheherazadeNew.ttf",
+          "assets/fonts/AmiriQuran.ttf",
+          "assets/fonts/KFGQPC-Uthmanic-Script-HAFS-Regular.otf",
+          "assets/fonts/KFGQPC-Uthman-Taha-Naskh-Regular.ttf",
+          "assets/fonts/Roboto-Regular.ttf",
+          "assets/fonts/Roboto-Medium.ttf",
+          "assets/fonts/Roboto-Bold.ttf"
+        ]
+      }
+    ],
+    [
+      "expo-asset"
+    ],
+    [
+      "react-native-email-link"
+    ],
+    [
+      "expo-build-properties",
+      {
+            "android": {
+              "compileSdkVersion": 35,
+              "targetSdkVersion": 35,
+              "buildToolsVersion": "35.0.0"
+            }
+      }
+    ],
+    [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#00A884",
+          "image": "./assets/images/splash.png",
+          "dark": {
+            "image": "./assets/images/splash.png",
+            "backgroundColor": "#000000"
+          },
+          "imageWidth": 200
+        }
+    ]
+  ]
+}

@@ -1,11 +1,15 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
-import { View, Dimensions, FlatList, TouchableOpacity, Text } from 'react-native';
+import { View, Dimensions, FlatList, TouchableOpacity, Text, ActivityIndicator } from 'react-native';
 import { useSelector } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { SurahResp } from '../models/Quran';
 import { QuranDetailSurahScreenProps } from '../navigation/type';
+import { RootState } from '../reducer/store';
 import Styles from '../Style';
 import { SurahScreen } from '../components/QuranDetailScreen';
+import { LAST_READ_KEYS } from '../config';
+
 
 type ItemProps = {
   item: SurahResp,
@@ -15,89 +19,108 @@ type ItemProps = {
 const { width } = Dimensions.get('window');
 const ITEM_WIDTH = width / 3;
 
-
-const getNavItemLayout = (data, index) => {
-  const result = { 
-    length: ITEM_WIDTH,
-    offset: ITEM_WIDTH * index,
-    index 
-  }
-
-  return result
-};
+const getNavItemLayout = (_data: ArrayLike<SurahResp> | null | undefined, index: number) => ({
+  length: ITEM_WIDTH,
+  offset: ITEM_WIDTH * index,
+  index,
+});
 
 export const QuranDetailTop = (props: QuranDetailSurahScreenProps) => {
-  const flatListRef = useRef(null);
-  const { navigation } = props;
-  let surahId = Number(props.route.params.surahId);
+  const flatListRef = useRef<FlatList<SurahResp>>(null);
+  const surahId = Number(props.route.params.surahId);
+  const isLastRead = !surahId;
+
   const [currentIndex, setCurrentIndex] = useState(surahId - 1);
 
-  const surahs = useSelector((state) => state.surah.data);
-  const loading = useSelector((state) => state.surah.loading);
-  const error = useSelector((state) => state.surah.error);
+  const [scrollToVerseId, setScrollToVerseId] = useState<number>(1);
 
-  // ayah all
-  const ayahs = useSelector((state) => state.ayahAll.data);
-  const loadingAyah = useSelector((state) => state.ayahAll.loading);
-  const errorAyah = useSelector((state) => state.ayahAll.error);
+  const [loadingLastRead, setLoadingLastRead] = useState(isLastRead);
 
-  const surah: SurahResp = surahs.find((s) => s.number === surahId);
+  const surahs = useSelector((state: RootState) => state.surah.data);
+  const ayahs = useSelector((state: RootState) => state.ayahAll.data);
+
+  // Fetch lastRead when navigated from "Terakhir Baca"
+  useEffect(() => {
+    if (!isLastRead) return;
+    const fetchLastRead = async () => {
+      try {
+        const lastReadKeys = await AsyncStorage.getItem(LAST_READ_KEYS);
+        if (lastReadKeys) {
+          const { verseId, surahNumber } = JSON.parse(lastReadKeys);
+          setCurrentIndex(Number(surahNumber) - 1);
+          setScrollToVerseId(Number(verseId));
+        } else {
+          setCurrentIndex(0);
+        }
+      } catch {
+        setCurrentIndex(0);
+      } finally {
+        setLoadingLastRead(false);
+      }
+    };
+    fetchLastRead();
+  }, []);
+
+  const surah: SurahResp | undefined = surahs.find((s) => s.number === currentIndex + 1);
 
   const scrollToIndex = (index: number) => {
     if (flatListRef.current) {
       flatListRef.current.scrollToIndex({
         index,
         animated: true,
-        viewPosition: 0.5, // 0 is at the top, 0.5 is centered, 1 is at the bottom
-      })
+        viewPosition: 0.5,
+      });
       setCurrentIndex(index);
     }
-  }
+  };
 
-  const renderItem = ({item, index}: ItemProps) => {
-    return (
-      <TouchableOpacity 
-          style={[
-            Styles.tabItem, 
-            { width: ITEM_WIDTH },
-            currentIndex == item.number - 1 ? Styles.tabActiveIndicator : null,
-          ]}
-          onPress={() => {
-            scrollToIndex(index);
-            navigation.navigate('QuranDetail', {
-              surahId: String(item.number),
-              surahName: item.name
-            });
-          }}
-          
-          >
-          <View style={Styles.tabItemInside}>
-            <Text style={[
-                Styles.tabLabel, 
-                currentIndex == item.number - 1 ? Styles.tabLabelActiveIndicator : null
-              ]}>
-              {item.name}
-            </Text>
-          </View>
-      </TouchableOpacity>
-    )
-  }
+  const renderItem = ({ item, index }: ItemProps) => (
+    <TouchableOpacity
+      style={[
+        Styles.tabItem,
+        { width: ITEM_WIDTH },
+        currentIndex === item.number - 1 ? Styles.tabActiveIndicator : null,
+      ]}
+      onPress={() => {
+        scrollToIndex(index);
+        //setScrollToVerseId(undefined);
+      }}
+    >
+      <View style={Styles.tabItemInside}>
+        <Text style={[
+          Styles.tabLabel,
+          currentIndex === item.number - 1 ? Styles.tabLabelActiveIndicator : null,
+        ]}>
+          {item.name}
+        </Text>
+      </View>
+    </TouchableOpacity>
+  );
 
   const keyExtractor = useCallback((item: SurahResp) => String(item.number), []);
 
-    // Attempt to scroll when component is ready
+  // Scroll tab bar to active surah
   useEffect(() => {
+    if (currentIndex < 0 || surahs.length === 0) return;
+
     const timer = setTimeout(() => {
-      // scrollToIndex(currentIndex);
-      flatListRef.current?.scrollToIndex({ 
-        index: currentIndex, 
+      flatListRef.current?.scrollToIndex({
+        index: currentIndex,
         animated: false,
         viewPosition: 0.5,
-        viewOffset: 0
+        viewOffset: 0,
       });
-    }, 100); // delay to ensure layout is done
-    return () => clearTimeout(timer); // Cleanup timer
-  }, [currentIndex]);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [currentIndex, surahs.length]);
+
+  if (loadingLastRead) {
+    return (
+      <View style={[Styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
+        <ActivityIndicator size="large" color="#1fb89d" />
+      </View>
+    );
+  }
 
   return (
     <View style={Styles.container}>
@@ -109,14 +132,13 @@ export const QuranDetailTop = (props: QuranDetailSurahScreenProps) => {
           keyExtractor={keyExtractor}
           getItemLayout={getNavItemLayout}
           showsHorizontalScrollIndicator={false}
-          //initialScrollIndex={currentIndex}
           inverted={true}
           horizontal={true}
           snapToAlignment="center"
           decelerationRate="fast"
         />
       </View>
-      <SurahScreen surah={surah} ayahs={ayahs} />
+      {surah && <SurahScreen surah={surah} ayahs={ayahs} scrollToVerseId={scrollToVerseId} />}
     </View>
-  )
-}
+  );
+};

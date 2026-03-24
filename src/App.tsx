@@ -38,8 +38,11 @@ export default function App() {
       'Roboto-Medium': require('../assets/fonts/Roboto-Medium.ttf'),
       'Roboto-Bold': require('../assets/fonts/Roboto-Bold.ttf'),
       'UthmanicArab-Regular': require('../assets/fonts/KFGQPC-Uthmanic-Script-HAFS-Regular.otf'),
+      "KFGQPC-Naskh-Regular": require('../assets/fonts/KFGQPC-Uthman-Taha-Naskh-Regular.ttf'),
       "AmiriQuran": require('../assets/fonts/AmiriQuran.ttf'),
       "Scheherazade-Reguler": require('../assets/fonts/ScheherazadeRegOT.ttf'),
+      "ScheherazadeNew": require('../assets/fonts/ScheherazadeNew.ttf'),
+      "Naskh": require('../assets/fonts/Naskh.ttf')
   })
 
   useEffect(() => {

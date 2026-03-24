@@ -1,8 +1,20 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import { ScrollView } from 'react-native';
+import { AGREED_TERMS_KEY } from '../config'; // AGREED_TERMS_KEY
+import WelcomeScreen from '../components/WelcomeScreen';
+import SettingPrivacy from '../components/SettingPrivacy';
+
+const KebijakanPrivasiScreen = () => (
+  <ScrollView contentContainerStyle={{ padding: 16 }}>
+    <SettingPrivacy />
+  </ScrollView>
+);
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCog } from '@fortawesome/free-solid-svg-icons'
@@ -97,9 +109,29 @@ const QuranList = () => {
 }
 
 const Navigation = () => {
-    return (
+  const [initialRoute, setInitialRoute] = useState<'Welcome' | 'Home' | null>(null);
+
+  useEffect(() => {
+    AsyncStorage.getItem(AGREED_TERMS_KEY).then(value => {
+      setInitialRoute(value === 'true' ? 'Home' : 'Welcome');
+    });
+  }, []);
+
+  if (!initialRoute) return null;
+
+  return (
         <NavigationContainer>
-          <RootStack.Navigator>
+          <RootStack.Navigator initialRouteName={initialRoute}>
+            <RootStack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
+            <RootStack.Screen
+              name="KebijakanPrivasi"
+              component={KebijakanPrivasiScreen}
+              options={{
+                title: 'Kebijakan Privasi',
+                headerStyle: StyleObj.header,
+                headerTintColor: '#fff',
+              }}
+            />
             <RootStack.Screen name="Home" component={HomeComp} options={{
               headerShown: false
             }}/>

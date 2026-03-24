@@ -9,7 +9,7 @@ import Styles from '../Style';
 const Bismi = () => {
   return (
     <View style={Styles.bismillah}>
-      <Text style={Styles.arabicText}>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</Text>
+      <Text style={Styles.arabicText}>بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</Text>
     </View>
   )
 }

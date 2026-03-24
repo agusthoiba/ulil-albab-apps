@@ -40,6 +40,12 @@ export type Juz = {
     start: string;
 }
 
+export type LastRead = {
+    surahId: number;
+    verseId: number;
+    ayahId: number;
+}
+
 export type Company = {
     ID: number;
     NAME: string;

@@ -6,12 +6,15 @@ import type { CompositeScreenProps } from '@react-navigation/native';
 import type { StackScreenProps } from '@react-navigation/stack';
 
 export type RootStackParamList = {
+  Welcome: undefined;
+  KebijakanPrivasi: undefined;
   Home: undefined;
   QuranList:  undefined;
   QuranDetail:  {
     surahId: string | undefined
     surahName: string | undefined
     juzId: number | undefined
+    verseId?: number
   }
 };
 
