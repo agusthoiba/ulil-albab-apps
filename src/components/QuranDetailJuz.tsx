@@ -78,7 +78,7 @@ const QuranDetailJuz = ({ juz }: DetailJuzProps) => {
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         removeClippedSubviews={Platform.OS !== 'web'}
-        estimatedItemSize={100}
+        //estimatedItemSize={100}
         showsVerticalScrollIndicator={false}
         //initialNumToRender={8}
         //maxToRenderPerBatch={5}

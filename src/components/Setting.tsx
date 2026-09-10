@@ -208,7 +208,7 @@ export default function Setting() {
           </View>
         </View>
 
-        <Text style={styles.settingContentFooter}>App Version 0.1 #0005</Text>
+        <Text style={styles.settingContentFooter}>App Version 0.0.6 </Text>
       
         <BottomSheet
               ref={bottomSheetRef}

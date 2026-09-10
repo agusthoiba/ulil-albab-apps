@@ -4,11 +4,22 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import { ScrollView } from 'react-native';
-import { AGREED_TERMS_KEY } from '../config'; // AGREED_TERMS_KEY
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faCog } from '@fortawesome/free-solid-svg-icons'
+
+import { AGREED_TERMS_KEY } from '../config';
+import { RootStackParamList, BottomTabParamList, QuranTabParamList } from './type'
 import WelcomeScreen from '../components/WelcomeScreen';
 import SettingPrivacy from '../components/SettingPrivacy';
+import Dashboard from '../components/Dashboard';
+import QuranListSurah from '../components/QuranListSurah';
+import QuranListJuz from '../components/QuranListJuz';
+import Setting from '../components/Setting';
+import StyleObj from '../StyleObj';
+import Styles from '../Style';
+import { QuranDetailTop } from '../components/QuranDetailTop'
+import { QuranTabJuzDetail } from '../components/QuranDetailJuzNav'
 
 const KebijakanPrivasiScreen = () => (
   <ScrollView contentContainerStyle={{ padding: 16 }}>
@@ -16,41 +27,15 @@ const KebijakanPrivasiScreen = () => (
   </ScrollView>
 );
 
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCog } from '@fortawesome/free-solid-svg-icons'
-import {  Home, Book, FileText, Calendar, Settings } from 'lucide-react'
-
-import { RootStackParamList, BottomTabParamList, QuranTabParamList, QuranJuzTabParamList } from './type'
-import Dashboard from '../components/Dashboard';
-import QuranListSurah from '../components/QuranListSurah';
-import QuranListJuz from '../components/QuranListJuz';
-import Setting from '../components/Setting';
-import StyleObj from '../StyleObj';
-import Styles from '../Style';
-// import { QuranTabDetail } from './QuranDetailNav'
-
-import { QuranDetailTop } from '../components/QuranDetailTop'
-import { QuranTabJuzDetail } from '../components/QuranDetailJuzNav'
-
 const RootStack = createStackNavigator<RootStackParamList>();
 const QuranTab = createMaterialTopTabNavigator<QuranTabParamList>();
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 
-const navItems = [
-    { icon: Home, label: 'Beranda' },
-    { icon: Book, label: 'Al-Quran' },
-    { icon: FileText, label: 'Tafsir' },
-    { icon: Calendar, label: 'Kalender' },
-    { icon: Settings, label: 'Settings' },
-  ]
-
-  {/* <View style={Styles.bottomNav}> */}
-      {/*</View> */}
 const HomeComp = () => {
   return (
     <BottomTab.Navigator>
-      <BottomTab.Screen name="Beranda" component={Dashboard}  options={{ 
+      <BottomTab.Screen name="Dashboard" component={Dashboard}  options={{ 
         title: 'Home',
         tabBarLabel: 'Beranda',
         tabBarIcon: ({ color, size }) => (
@@ -108,8 +93,10 @@ const QuranList = () => {
   )
 }
 
+type Par = 'Welcome' | 'Home';
 const Navigation = () => {
-  const [initialRoute, setInitialRoute] = useState<'Welcome' | 'Home' | null>(null);
+  const [initialRoute, setInitialRoute] = useState(null);
+  
 
   useEffect(() => {
     AsyncStorage.getItem(AGREED_TERMS_KEY).then(value => {
@@ -123,9 +110,7 @@ const Navigation = () => {
         <NavigationContainer>
           <RootStack.Navigator initialRouteName={initialRoute}>
             <RootStack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
-            <RootStack.Screen
-              name="KebijakanPrivasi"
-              component={KebijakanPrivasiScreen}
+            <RootStack.Screen name="KebijakanPrivasi" component={KebijakanPrivasiScreen}
               options={{
                 title: 'Kebijakan Privasi',
                 headerStyle: StyleObj.header,
@@ -136,20 +121,23 @@ const Navigation = () => {
               headerShown: false
             }}/>
 
-            <RootStack.Screen name="QuranList" component={QuranList} 
-              options={({ route }) => ({
-                headerBackButtonDisplayMode: 'minimal', 
+            <RootStack.Screen name="QuranList" component={QuranList}
+              options={{
                 title: 'Al-Quran',
                 headerStyle: StyleObj.header,
                 headerTintColor: '#fff',
-                headerBackTitleStyle: StyleObj.headerBackTitle
-              })}
+              }}
             />
 
+      
             <RootStack.Screen name="QuranDetail" component={QuranDetailTop} 
               options={({ route }) => ({
-                title: 'Surah',
-                name: route.params.surahName,
+                // "Terakhir Baca" navigates with surahName: undefined, so the
+                // title is resolved from the loaded route params safely.
+                // title: route.params?.surahName ? `Surah ${route.params.surahName}` : 'Surah',
+                title: 'Al-Quran',
+                //name: route.params?.surahName,
+                name: 'Al-Quran',
                 headerStyle: StyleObj.header,
                 headerTintColor: '#fff',
                 headerBackTitleStyle: StyleObj.headerBackTitle

@@ -6,7 +6,7 @@ import { logger } from "react-native-logs";
 import { getSurahAsync } from '../reducer/surahSlice';
 import { getAllAyahAsync } from '../reducer/ayahAllSlice';
 import Styles from '../Style';
-import { HomeScreenProps } from '../navigation/type';
+import { DashboardScreenProps } from '../navigation/type';
 import { RootState } from '../reducer/store';
 
 const log = logger.createLogger();
@@ -74,7 +74,7 @@ const SyncAyahData = () => {
   }
 }
 
-const Dashboard = ({route, navigation}: HomeScreenProps) => {
+const Dashboard = ({route, navigation}: DashboardScreenProps) => {
   return (
     <View style={Styles.container}>
       <SyncSurahData />

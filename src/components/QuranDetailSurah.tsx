@@ -20,7 +20,7 @@ const Bismi = ({ surahId }: { surahId: number }) => {
   );
 };
 
-const QuranDetailSurah = ({ surah, ayahs, scrollToVerseId }: { surah: SurahResp; ayahs: Ayah[]; scrollToVerseId?: number }) => {
+const QuranDetailSurah = ({ surah, ayahs, scrollToVerseId = 1 }: { surah: SurahResp; ayahs: Ayah[]; scrollToVerseId?: number }) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const flatListRef = useRef<FlatList<Ayah>>(null);
   const [selectedAyah, setSelectedAyah] = useState<Ayah | null>(null);
@@ -33,10 +33,10 @@ const QuranDetailSurah = ({ surah, ayahs, scrollToVerseId }: { surah: SurahResp;
     const timer = setTimeout(() => {
       flatListRef.current?.scrollToIndex({
         index,
-        animated: true,
+        animated: false,
         viewPosition: 0,
       });
-    }, 600);
+    }, 10);
     return () => clearTimeout(timer);
   }, [scrollToVerseId, ayahs.length]);
 
@@ -114,10 +114,10 @@ const QuranDetailSurah = ({ surah, ayahs, scrollToVerseId }: { surah: SurahResp;
           setTimeout(() => {
             flatListRef.current?.scrollToIndex({
               index: info.index,
-              animated: true,
+              animated: false,
               viewPosition: 0,
             });
-          }, 200);
+          }, 10);
         }}
       />
 

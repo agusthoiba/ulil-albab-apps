@@ -1,12 +1,12 @@
 import '../gesture-handler';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Provider } from 'react-redux'
-import { useFonts } from 'expo-font'; 
+import { useFonts } from 'expo-font';
 import { logger } from "react-native-logs";
-import { persistStore } from 'redux-persist';
-import { PersistGate } from 'redux-persist/integration/react';
+import { initStore } from 'react-native-redux-persist2';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faHome } from '@fortawesome/free-solid-svg-icons/faHome';
@@ -17,22 +17,12 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons/faUserCircle';
 library.add(faHome, faBookReader, faPray, faUserCircle)
 
 import Navigation from './navigation/index';
-import store from '../src/reducer/store';
+import store, { persistConfig } from '../src/reducer/store';
 
 const log = logger.createLogger();
 
-const persistor = persistStore(store);
-
-persistor.subscribe(() => {
-  const { bootstrapped } = persistor.getState()
-  if (bootstrapped) {
-    log.info('Rehydration complete')
-  }
-})
-// <LogContext.Provider value={log}>
-// </LogContext.Provider>
-
 export default function App() {
+  //const [rehydrated, setRehydrated] = useState(false);
   const [fontsLoaded, error] = useFonts({
       'Roboto-Regular': require('../assets/fonts/Roboto-Regular.ttf'),
       'Roboto-Medium': require('../assets/fonts/Roboto-Medium.ttf'),
@@ -46,6 +36,13 @@ export default function App() {
   })
 
   useEffect(() => {
+    initStore(store, persistConfig).then(() => {
+      //log.info('Rehydration complete');
+      //setRehydrated(true);
+    });
+  }, []);
+
+  useEffect(() => {
     if (fontsLoaded || error) {
       SplashScreen.hideAsync();
     }
@@ -55,14 +52,15 @@ export default function App() {
     return null;
   }
 
-  //persistor.purge(); // optional: clear storage if needed
-  //persistor.flush(); // optional: flush storage to make sure state is persisted immediately
+  /*if (!rehydrated) {
+    return null;
+  }*/
 
-  return (   
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Provider store={store}>
         <Navigation />
-      </PersistGate>
-    </Provider>
+      </Provider>
+    </GestureHandlerRootView>
   );
 }

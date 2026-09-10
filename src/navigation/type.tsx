@@ -9,16 +9,21 @@ export type RootStackParamList = {
   Welcome: undefined;
   KebijakanPrivasi: undefined;
   Home: undefined;
-  QuranList:  undefined;
-  QuranDetail:  {
-    surahId: string | undefined
-    surahName: string | undefined
-    juzId: number | undefined
-    verseId?: number
-  }
+  QuranList: undefined;
+  QuranDetail: {
+    surahId: string | undefined;
+    surahName: string | undefined;
+    juzId: number | undefined;
+    verseId?: number;
+  };
+  QuranDetailJuz: { juzId: number };
+  Setting: undefined;
 };
 
-export type HomeScreenProps = NativeStackScreenProps<RootStackParamList,"Home">;
+export type DashboardScreenProps = CompositeScreenProps<
+  BottomTabScreenProps<BottomTabParamList, "Dashboard">,
+  StackScreenProps<RootStackParamList, "Home">
+>;
 
 export type QuranTabParamList = {
   QuranListSurah: undefined;
@@ -41,7 +46,7 @@ export type QuranDetailTabParamList = {
 };
 
 export type BottomTabParamList = {
-  Home: undefined;
+  Dashboard: undefined;
   Quran: undefined;
   Tafsir: undefined;
   Settings: undefined;

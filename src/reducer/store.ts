@@ -1,30 +1,20 @@
-import { 
-  configureStore, 
+import {
+  configureStore,
   combineReducers
 } from '@reduxjs/toolkit';
 
-import { 
-  persistStore, 
-  persistReducer,
-} from "redux-persist";
-import storage from "@react-native-async-storage/async-storage";
+import { persistReducer } from 'react-native-redux-persist2';
 import surahReducer from './surahSlice';
 import ayahAllReducer from './ayahAllSlice';
 import ayahReducer from './ayahSlice';
 
-const persistConfig = {
-    key: "root",
-    version: 3,
-    storage,
-  };
-
-const rootReducer = combineReducers({ 
+const rootReducer = combineReducers({
   surah: surahReducer,
   ayahAll: ayahAllReducer,
   ayah: ayahReducer
-})
-  
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+});
+
+const persistedReducer = persistReducer(rootReducer);
 
 const store = configureStore({
     reducer: persistedReducer,
@@ -36,7 +26,10 @@ const store = configureStore({
       })
 });
 
-export let persistor = persistStore(store);
+export const persistConfig = {
+  key: "root",
+  storage: { type: "AsyncStorage" as const }
+};
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

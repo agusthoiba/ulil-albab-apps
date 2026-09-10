@@ -27,10 +27,13 @@ const getNavItemLayout = (_data: ArrayLike<SurahResp> | null | undefined, index:
 
 export const QuranDetailTop = (props: QuranDetailSurahScreenProps) => {
   const flatListRef = useRef<FlatList<SurahResp>>(null);
-  const surahId = Number(props.route.params.surahId);
-  const isLastRead = !surahId;
+  const surahId = Number(props.route.params?.surahId);
+  // Guard against "Terakhir Baca" navigation that sends `surahId: undefined`.
+  // Number(undefined) is NaN, so `Number.isFinite` keeps currentIndex valid.
+  const hasSurahParam = Number.isFinite(surahId) && surahId > 0;
+  const isLastRead = !hasSurahParam;
 
-  const [currentIndex, setCurrentIndex] = useState(surahId - 1);
+  const [currentIndex, setCurrentIndex] = useState(hasSurahParam ? surahId - 1 : 0);
 
   const [scrollToVerseId, setScrollToVerseId] = useState<number>(1);
 
@@ -47,8 +50,12 @@ export const QuranDetailTop = (props: QuranDetailSurahScreenProps) => {
         const lastReadKeys = await AsyncStorage.getItem(LAST_READ_KEYS);
         if (lastReadKeys) {
           const { verseId, surahNumber } = JSON.parse(lastReadKeys);
-          setCurrentIndex(Number(surahNumber) - 1);
-          setScrollToVerseId(Number(verseId));
+          const savedIndex = Number(surahNumber) - 1;
+          const savedVerseId = Number(verseId);
+          setCurrentIndex(Number.isFinite(savedIndex) && savedIndex >= 0 ? savedIndex : 0);
+          setScrollToVerseId(
+            Number.isFinite(savedVerseId) && savedVerseId > 0 ? savedVerseId : 1,
+          );
         } else {
           setCurrentIndex(0);
         }
@@ -59,19 +66,25 @@ export const QuranDetailTop = (props: QuranDetailSurahScreenProps) => {
       }
     };
     fetchLastRead();
-  }, []);
+  }, [isLastRead]);
 
   const surah: SurahResp | undefined = surahs.find((s) => s.number === currentIndex + 1);
 
   const scrollToIndex = (index: number) => {
-    if (flatListRef.current) {
-      flatListRef.current.scrollToIndex({
-        index,
-        animated: true,
-        viewPosition: 0.5,
-      });
-      setCurrentIndex(index);
+    if (
+      !Number.isFinite(index) ||
+      index < 0 ||
+      index >= surahs.length ||
+      !flatListRef.current
+    ) {
+      return;
     }
+    flatListRef.current.scrollToIndex({
+      index,
+      animated: true,
+      viewPosition: 0.5,
+    });
+    setCurrentIndex(index);
   };
 
   const renderItem = ({ item, index }: ItemProps) => (
@@ -101,8 +114,15 @@ export const QuranDetailTop = (props: QuranDetailSurahScreenProps) => {
 
   // Scroll tab bar to active surah
   useEffect(() => {
-    if (currentIndex < 0 || surahs.length === 0) return;
-
+    // Guard against NaN / out-of-range indexes (e.g. "Terakhir Baca" with no
+    // valid saved position). FlatList.scrollToIndex throws on invalid indexes.
+    if (
+      !Number.isFinite(currentIndex) ||
+      currentIndex < 0 ||
+      currentIndex >= surahs.length
+    ) {
+      return;
+    }
     const timer = setTimeout(() => {
       flatListRef.current?.scrollToIndex({
         index: currentIndex,
