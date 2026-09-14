@@ -1,0 +1,37 @@
+{
+  "name": "Ulil Albab",
+  "slug": "ulil-albab",
+  "version": "0.0.7",
+  "icon": "./assets/images/icon.png",
+  "splash": {
+    "image": "./assets/images/splash.png",
+    "resizeMode": "contain",
+    "backgroundColor": "#00A884"
+  },
+  "assetBundlePatterns": [
+    "**/*"
+  ],
+  "platforms": [
+    "ios",
+    "android",
+    "web"
+  ],
+  "web": {
+    "favicon": "./assets/images/logo_ulil_albab_sq_bg_half.png"
+  },
+  "extra": {
+    "eas": {
+      "projectId": "e3915484-5ebe-4d61-be6a-a2416f41546d"
+    }
+  },
+  "android": {
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/images/adaptive-icon.png",
+      "backgroundColor": "#00A884"
+    },
+    "package": "com.gust0.ulilalbab"
+  },
+  "ios": {
+    "bundleIdentifier": "com.gust0.ulilalbab"
+  }
+}

@@ -1,0 +1,129 @@
+import React, { useEffect } from 'react';
+import {Text, View, ScrollView, Image, TouchableOpacity, ActivityIndicator, Alert} from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { logger } from "react-native-logs";
+
+import { getSurahAsync } from '../reducer/surahSlice';
+import { getAllAyahAsync } from '../reducer/ayahAllSlice';
+import Styles from '../Style';
+import { DashboardScreenProps } from '../navigation/type';
+import { RootState } from '../reducer/store';
+
+const log = logger.createLogger();
+
+type Feature = {
+  id: number;
+  title: string;
+  icon: string;
+  route?: string; // Optional route for navigation
+};
+
+const features: Feature[] = [
+  { id: 1, title: 'Al-Quran', icon: '📖', route: 'QuranList' },
+  //{ id: 2, title: 'Bookmark', icon: '📑'},
+  { id: 2, title: 'Terakhir Baca', icon: '📑', route: 'LastRead' },
+  { id: 3, title: 'Azbabun Nuzul', icon: '📗' },
+  //{ id: 2, title: 'Tafsir', icon: '🤲', route: 'QuranList' },
+  { id: 4, title: 'Pengaturan', icon: '⚙️', route: 'Settings' }
+]
+
+const SyncSurahData = () => {
+  const items = useSelector((state: RootState) => state.surah.data);
+  const loading = useSelector((state: RootState) => state.surah.loading);
+  const error = useSelector((state: RootState) => state.surah.error);
+  
+  const dispatch = useDispatch();
+  useEffect(() => {
+      // if have been not persist use dispatch
+      if (items.length === 0) {
+        dispatch(getSurahAsync());
+      }
+    }, [dispatch]);
+
+  if (loading) {
+    return <ActivityIndicator size="large" style={Styles.loader} />;
+  }
+
+  if (error) {
+    log.error("error: ", error)
+    return <View><Text>An error occured while load surah</Text></View>
+  }
+}
+
+const SyncAyahData = () => {
+  const items = useSelector((state: RootState) => state.ayahAll.data);
+  const loading = useSelector((state: RootState) => state.ayahAll.loading);
+  const error = useSelector((state: RootState) => state.ayahAll.error);
+  
+  const dispatch = useDispatch();
+  useEffect(() => {
+      // if have been not persist use dispatch
+      if (items.length === 0) {
+        dispatch(getAllAyahAsync());
+      }
+    }, [dispatch]);
+
+
+  if (loading) {
+    return <ActivityIndicator size="large" style={Styles.loader} />;
+  }
+
+  if (error) {
+    log.error("error: ", error)
+    return <View><Text>An error occured while load ayat</Text></View>
+  }
+}
+
+const Dashboard = ({route, navigation}: DashboardScreenProps) => {
+  return (
+    <View style={Styles.container}>
+      <SyncSurahData />
+      <SyncAyahData />
+
+      <ScrollView contentContainerStyle={Styles.dashboardContainer}>
+        <View style={Styles.homeHeader}>
+            <Image 
+              source={require('../../assets/images/logo_ulil_albab-photoroom-80.png')}
+              style={Styles.logo} 
+            />
+            <Text style={Styles.headerTitle}>Ulil Albab</Text>
+        </View>
+
+        <View style={Styles.featuresGrid}>
+          {/* Features Grid */}
+          {features.map((feature) => (
+            <TouchableOpacity  onPress={() => {
+              if (feature.id === 2) {
+                navigation.navigate('QuranDetail', { surahId: undefined, surahName: undefined, juzId: undefined });
+              } else if (feature.route) {
+                navigation.navigate(feature.route);
+              } else {
+                Alert.alert("Fitur belum tersedia", "Fitur ini masih dalam pengembangan, mohon bersabar ya :)");
+              }
+            }} key={feature.id} style={Styles.featureItem}>
+              <Text style={Styles.featureIcon}>{feature.icon}</Text>
+              <Text style={Styles.featureTitle}>{feature.title}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        <View style={Styles.locationContainer}>
+          <Text style={Styles.arabicTextCaption}>
+            اِنَّ فِيْ خَلْقِ السَّمٰوٰتِ وَالْاَرْضِ وَاخْتِلَافِ الَّيْلِ وَالنَّهَارِ لَاٰيٰتٍ لِّاُولِى الْاَلْبَابِۙ
+          </Text>
+          <Text style={Styles.date}>
+            Sesungguhnya dalam penciptaan langit dan bumi, dan pergantian malam dan siang terdapat tanda-tanda (kebesaran Allah) bagi orang yang berakal (QS. Ali Imran: 190)
+          </Text>
+        </View>
+
+          {/*<View style={Styles.bannerContainer}>
+            <Image 
+              source={require('../../assets/images/banner.png')} 
+            />
+          </View>*/}
+      </ScrollView>
+    </View>
+  );
+}
+
+export default Dashboard;
